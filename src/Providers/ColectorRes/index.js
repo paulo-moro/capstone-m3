@@ -1,0 +1,8 @@
+
+
+
+const WasteProvider = ({children}) => {
+
+    
+
+}
