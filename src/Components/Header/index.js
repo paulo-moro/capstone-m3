@@ -1,9 +1,9 @@
-import { StyledHeader } from "./style"
+import coletor from '../../Images/coletor.jpg'
 import leaf from '../../Images/leaf.png'
 import { useHeader } from "../../Providers/Header"
-import SearchBox from "../SearchBox"
 import Button from '../Button'
-import coletor from '../../Images/coletor.jpg'
+import SearchBox from "../SearchBox"
+import { StyledHeader } from "./style"
 
 const Header = () => {
     const { headerType } = useHeader()
@@ -27,7 +27,7 @@ const Header = () => {
                             </li>
                         </ul>
                     </nav>
-                    : (headerType === 'homeColetor' ?
+                    : (headerType === 'homeCollector' ?
                         <nav>
                             <SearchBox />
                             <Button whiteButton width='small' padding='9px 15px' fontSize='14px'>Logout</Button>
