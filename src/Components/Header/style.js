@@ -56,4 +56,24 @@ display: flex;
         color: var(--green2);
         border-bottom: 2px solid var(--green1);
     }
+
+    nav {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .profilePic {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        border: 2px solid var(--green1);
+        cursor: pointer;
+    }
+
+    .profilePic:hover {
+        filter: brightness(110%);
+    }
+    
 `
