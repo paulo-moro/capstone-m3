@@ -11,7 +11,9 @@ const FormRegister = () => {
     
 	const schema = yup.object().shape({
         name: yup.string().required('Digite seu nome completo!').min(3, "Digite seu nome com ao menos 03 caracteres!"),
+        city: yup.string().required('Digite sua cidade!'),
         email: yup.string().required('Digite seu Email!').email('Email não é válido').oneOf([yup.ref('email')], 'os Emails não são iguais!'),
+
         pass: yup.string().required('Digite sua Senha!').matches(
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
          "Deve conter 08 caracteres sendo uma letra maiúscula, uma minúscula, um número e um caractere especial(!,@,#,$,%,&...)"
