@@ -1,4 +1,3 @@
-import FormLogin from "./Components/FormLogin";
 import FormRegister from "./Components/FormRegister";
 import Header from "./Components/Header";
 import Routes from "./Routes";
@@ -11,7 +10,6 @@ function App() {
       <GlobalStyle/>
       <Header />
       <Routes/>
-      <FormLogin/>
 
     </div>
   );

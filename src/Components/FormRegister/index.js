@@ -1,10 +1,10 @@
-import Button from "../Button"
-import { StyledForm } from "../FormLogin/style"
-import * as yup from "yup";
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useSnackbar } from "notistack";
 import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import Button from "../Button";
+import { StyledForm } from "../FormLogin/style";
 
 const FormRegister = () => {
 	const { enqueueSnackbar } = useSnackbar();

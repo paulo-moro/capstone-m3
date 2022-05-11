@@ -1,11 +1,11 @@
-import { StyledForm } from "./style"
-import Button from '../Button'
-import { Link } from "react-router-dom"
-import { useSnackbar } from "notistack";
-import * as yup from "yup";
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useSnackbar } from "notistack";
 import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import * as yup from "yup";
+import Button from '../Button';
+import { StyledForm } from "./style";
 
 const FormLogin = () => {
   const { enqueueSnackbar } = useSnackbar();
