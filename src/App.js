@@ -7,12 +7,9 @@ import GlobalStyle from "./Styles/globalStyle";
 function App() {
   return (
     <div className="App">
-      <Providers>
-        <GlobalStyle/>
-        <Header />
-        <Routes/>
-      </Providers>
-    
+      <GlobalStyle/>
+      <Header />
+      <Routes/>
     </div>
   );
 }
