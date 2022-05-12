@@ -1,9 +1,7 @@
+import { HeaderProvider } from "./Header"
 import { AuthProvider } from "./IsAuth"
 import { UserProvider } from "./user"
 import { UserWasteProvider } from "./UserRes"
-
-
-
 
 
 export const Providers = ({children}) =>{
@@ -11,9 +9,10 @@ export const Providers = ({children}) =>{
     <AuthProvider>
       <UserProvider>
         <UserWasteProvider>
-          {children}
+          <HeaderProvider>{children}</HeaderProvider>
         </UserWasteProvider>
       </UserProvider>
     </AuthProvider> 
   )
 }
+
