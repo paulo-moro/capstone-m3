@@ -1,55 +1,61 @@
 // historico dos residuos do usuario
-import { createContext, useContext, useEffect, useState } from "react";
-import Api from "../../Api";
+import axios from "axios";
+import { createContext, useContext,  useState } from "react";
 import { useAuth } from "../IsAuth";
+import { useUser } from "../user";
 export const UserWasteContext = createContext()
 
 
 export const UserWasteProvider = ({children}) => {
   const {auth} = useAuth()
   const [userWaste, setUserWaste] = useState([])
+  const {user} = useUser()
 
-  const ShowUserWaste = ({id,type}) => {
-    useEffect(()=>{
-      type === "client" ?
-      Api.get(`/waste`,{headers:{"Authorization":`Bearer ${auth}`}})
-      .then(res=>setUserWaste(res.data.filter((waste)=>{
-        return waste.client_id === id
-      })))
-      .catch(err=>err)
-      :type === "collector" && 
-      Api.get(`/waste`)
-      .then(res=>setUserWaste(res.data.filter((waste)=>{
-        return waste.collector_id === id || waste.status === "pendente"
-      })))
-      .catch(err=>err)
-    },[])    
-  }
+  const getUserWaste = ({id,type}) => {
+      
+    type === "client" ?
+    axios.get(`https://api-capstone-m3.herokuapp.com/waste`,{headers:{"Authorization":`Bearer ${auth}`}})
+    .then(res=>setUserWaste(res.data.filter((waste)=>{      
+      return waste.client_id === id
+    })))
+    .catch(err=>err)
+    :type === "collector" &&     
+    axios.get(`https://api-capstone-m3.herokuapp.com/waste`,{headers:{"Authorization":`Bearer ${auth}`}})
+    .then(res=>setUserWaste(res.data.filter((waste)=>{
+      return waste.collector_id === id || waste.status === "pendente"
+    })))
+    .catch(err=>err)
+      
+  }//função que busca na api os residuos do cliente ou coletor, no caso do coletor pega também coletas pendentes
 
-  const rmvUserWaste =({id,type}, wasteId )=>{
+  const rmvClientWaste =({type}, wasteId )=>{
     const newList = userWaste.filter((waste)=>{
       return waste.id !== wasteId        
     })
     
     if(type === "client"){    
       setUserWaste(newList)
-      Api.delete(`waste/${wasteId}`,{
+      axios.delete(`https://api-capstone-m3.herokuapp.com/waste/${wasteId}`,{
         headers:
         {"Authorization":`Bearer ${auth}`}
       })
     }
-    else if(type === "collector"){
-      setUserWaste(newList)
-      Api.patch(`waste/${wasteId}`,{status:"pendente", collector_id:id},{
-        headers:
-        {"Authorization":`Bearer ${auth}`}
-      })
-    }
-  }
+    
+  }//função para deletar waste da lista do cliente, função somente para cliente
+
+  const changeWasteProps =  (wasteId,data)=>{   
+        
+    axios.patch(`https://api-capstone-m3.herokuapp.com/waste/${wasteId}`,data,{
+      headers:
+      {"Authorization":`Bearer ${auth}`}
+    })
+    getUserWaste(user) 
+    
+  } //Função para modificar propriedades, tanto para cliente quanto coletor, vc deve passar o id do residuo e depois o objeto com as alterações
 
 
   return(
-    <UserWasteContext.Provider value={{userWaste, ShowUserWaste,rmvUserWaste}}>
+    <UserWasteContext.Provider value={{userWaste, getUserWaste,rmvClientWaste,changeWasteProps}}>
       {children}
     </UserWasteContext.Provider>
 

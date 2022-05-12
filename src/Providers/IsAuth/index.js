@@ -4,13 +4,14 @@ export const AuthContext = createContext()
 
 export const AuthProvider = ({children}) => {
     
-    const [auth, setAuth] = useState("")
+    const [auth, setAuth] = useState(localStorage.getItem("@Ecoleta_token")||false)
 
-    const haveToken = () => {
-        localStorage.getItem("@Ecoleta_token")||[]?setAuth(localStorage.getItem("@Ecoleta_token")):setAuth(false)        
+    const handleAuth=()=>{
+        setAuth(localStorage.getItem("@Ecoleta_token")||false)
     }
+   
     return(
-        <AuthContext.Provider value={{auth, haveToken}}>
+        <AuthContext.Provider value={{auth,handleAuth}}>
             {children}
         </AuthContext.Provider>
 
