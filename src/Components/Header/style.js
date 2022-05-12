@@ -48,7 +48,7 @@ padding: 0 20px 0 20px;
         cursor: pointer;
         padding: 10px 0 10px 0;
         border-bottom: 2px solid var(--grey1);
-       
+       text-align: center;
     
     }
 
@@ -57,4 +57,39 @@ padding: 0 20px 0 20px;
         border-bottom: 2px solid var(--green1);
     }
 
+    nav {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        gap: 20px;
+        margin-left: 10px;
+    }
+
+    .profilePic {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        border: 2px solid var(--green1);
+        cursor: pointer;
+    }
+
+    .profilePic:hover {
+        filter: brightness(110%);
+    }
+
+    @media (max-width: 600px) {
+        & {
+            height: 80px;
+        }
+        section {
+          align-items: center;
+          justify-content: center;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+    }
+    
 `

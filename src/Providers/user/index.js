@@ -10,12 +10,12 @@ export const UserProvider = ({children}) => {
         setUser(person)
     }
 
-    const removeUser = () => {
+    const rmvUser = () => {
         setUser("")
     }
 
     return(
-        <UserContext.Provider value={{user, addUser, removeUser}}>
+        <UserContext.Provider value={{user, addUser, rmvUser}}>
             {children}
         </UserContext.Provider>
 

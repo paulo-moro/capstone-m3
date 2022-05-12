@@ -14,7 +14,8 @@ html, body, .App {
         --green4: #395f43;
         --green5: #183939;
         --grey1 : #e0e3e0;
-        --grey2 : #c4c4c4;  
+        --grey2 : #c4c4c4; 
+        --grey3 : #e3e3e3; 
         --red   : #B21818;   
         --blue  : #3D8ED9; 
         --yellow: #FFE70B;
@@ -75,5 +76,12 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
 `
