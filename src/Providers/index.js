@@ -4,7 +4,7 @@ import { UserProvider } from "./user"
 import { UserWasteProvider } from "./UserRes"
 
 
-export const Providers = ({children}) =>{
+const Providers = ({children}) =>{
   return(
     <AuthProvider>
       <UserProvider>
@@ -16,3 +16,4 @@ export const Providers = ({children}) =>{
   )
 }
 
+export default Providers
