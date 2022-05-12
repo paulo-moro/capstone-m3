@@ -6,8 +6,7 @@ height: 70px;
 border-bottom: 2px solid var(--grey2);
 box-shadow: 0px 6px 14px -4px rgba(0,0,0,0.12);
 display: flex;
-padding: 5px 20px 0 20px;
-
+padding: 0 20px 0 20px;
 
     h1 {
         font-weight: bold;
