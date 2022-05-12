@@ -29,7 +29,7 @@ const Header = () => {
                     </nav>
                     : (headerType === 'homeCollector' ?
                         <nav>
-                            <SearchBox />
+        
                             <Button whiteButton width='small' padding='9px 15px' fontSize='14px'>Logout</Button>
                             <img src={coletor} alt='Foto de Perfil' className="profilePic" />
                         </nav>
