@@ -7,6 +7,10 @@ border-bottom: 2px solid var(--grey2);
 box-shadow: 0px 6px 14px -4px rgba(0,0,0,0.12);
 display: flex;
 padding: 0 20px 0 20px;
+    a {
+        text-decoration: none;
+        color: inherit
+    }
 
     h1 {
         font-weight: bold;
@@ -16,16 +20,16 @@ padding: 0 20px 0 20px;
         cursor: pointer;
         border-bottom: 2px solid transparent;
     }
-    h1>span {
+    h1>a>span {
         color: var(--black);
     }
 
-    h1>img {
+    h1>a>img {
         width: 35px;
     }
     section {
         width: 100%;
-        max-width: 1000px;
+        max-width: 1050px;
         margin: 0 auto;
         display: flex;
         flex-flow: row wrap;
@@ -44,7 +48,7 @@ padding: 0 20px 0 20px;
         gap: 25px;
     }
 
-    li {
+    .navItem {
         cursor: pointer;
         padding: 10px 0 10px 0;
         border-bottom: 2px solid var(--grey1);
@@ -52,7 +56,7 @@ padding: 0 20px 0 20px;
     
     }
 
-    li:hover {
+    .navItem:hover {
         color: var(--green2);
         border-bottom: 2px solid var(--green1);
     }
@@ -79,7 +83,7 @@ padding: 0 20px 0 20px;
 
     @media (max-width: 600px) {
         & {
-            height: 80px;
+            height: 90px;
         }
         section {
           align-items: center;
