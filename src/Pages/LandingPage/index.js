@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import Footer from "../../Components/Footer"
 import FormLogin from '../../Components/FormLogin'
 import RawModal from "../../Components/RegisterModal"
+import ImgFlag from "../../Components/ImgFlag"
 import car from '../../Images/car.svg'
 import flower from '../../Images/flower.svg'
 import ride from '../../Images/ride.svg'
@@ -26,8 +27,6 @@ const LandingPage = () => {
                 counter = 0
             }
         }, 8000) 
-
-
     }, [])
 
 
@@ -38,36 +37,21 @@ const LandingPage = () => {
                     <motion.div className="display" initial={{ opacity: 0, marginLeft: '-500px' }}
                         animate={{ opacity: '100%', marginLeft: 0 }}
                         transition={{ duration: 2.5}}>
-                        <img src={ride} alt='Homem andando de bicicleta' />
-                        <div className="display__paragraph">
-                            <p className="p1">Você na linha de frente</p>
-                            <p className="p2">de um mundo</p>
-                            <p className="p3">mais ecológico</p>
-                        </div>
+                        <ImgFlag p1={'Você na linha de frente'} p2={'de um mundo'} p3={'mais ecológico'} imgSrc={ride} alt={'Homem andando de bicicleta'}/>
                     </motion.div>
                 }
                 {displayFrame === 'flower' &&
                     <motion.div className="display" initial={{ opacity: 0,  marginLeft: '-500px' }}
                         animate={{ opacity: '100%', marginLeft: 0 }}
                         transition={{ duration: 2.5 }}>
-                        <img src={flower} alt='Mulher cuidando de plantas' />
-                        <div className="display__paragraph">
-                            <p className="p1">Ativamente ajudando</p>
-                            <p className="p2">sua cidade se tornar</p>
-                            <p className="p3">um lugar melhor</p>
-                        </div>
+                        <ImgFlag p1={'Ativamente ajudando'} p2={'sua cidade se tornar'} p3={'um lugar melhor'} imgSrc={flower} alt={'Mulher cuidando de plantas'}/>
                     </motion.div>
                 }
                 {displayFrame === 'car' &&
                     <motion.div className="display" initial={{ opacity: 0,  marginLeft: '-500px'}}
                         animate={{ opacity: '100%', marginLeft: 0 }}
                         transition={{ duration: 2.5 }}>
-                        <img src={car} alt='Homem andando de bicicleta' />
-                        <div className="display__paragraph">
-                            <p className="p1">Aumentando sua renda,</p>
-                            <p className="p2">enquanto colabora por</p>
-                            <p className="p3">um mundo mais ECO</p>
-                        </div>
+                        <ImgFlag p1={'Aumentando sua renda,'} p2={'enquanto colabora por'} p3={'um mundo mais ECO'} imgSrc={car} alt={'Carro életrico'}/>
                     </motion.div>
                 }
                 <FormLogin />

@@ -39,7 +39,7 @@ align-items: center;
     .display__paragraph {
         position: absolute;
         top: 30px;
-        right: -20px;
+        right: -30px;
         text-align: end;
         display: flex;
         flex-direction: column;

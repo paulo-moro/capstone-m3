@@ -5,7 +5,7 @@ width: 100%;
 padding: 20px;
 margin-top: auto;
 background-color: var(--green2);
-box-shadow: 0px -1px 15px 5px rgba(0,0,0,0.47);
+box-shadow: 0px -1px 15px 5px rgba(0,0,0,0.17);
 
 section {
     position: relative;
