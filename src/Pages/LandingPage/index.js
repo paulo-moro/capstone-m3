@@ -1,13 +1,13 @@
+import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
-import { useHeader } from "../../Providers/Header"
-import { StyledMain } from "./style"
+import Footer from "../../Components/Footer"
 import FormLogin from '../../Components/FormLogin'
-import ride from '../../Images/ride.svg'
+import RawModal from "../../Components/RegisterModal"
 import car from '../../Images/car.svg'
 import flower from '../../Images/flower.svg'
-import { motion, AnimatePresence } from "framer-motion"
-import Footer from "../../Components/Footer"
-import RawModal from "../../Components/RegisterModal"
+import ride from '../../Images/ride.svg'
+import { useHeader } from "../../Providers/Header"
+import { StyledMain } from "./style"
 
 const LandingPage = () => {
     const { changeHeader } = useHeader()
@@ -65,8 +65,8 @@ const LandingPage = () => {
                         <img src={car} alt='Homem andando de bicicleta' />
                         <div className="display__paragraph">
                             <p className="p1">Aumentando sua renda,</p>
-                            <p className="p2">enquanto colabora</p>
-                            <p className="p3">por mundo mais ECO</p>
+                            <p className="p2">enquanto colabora por</p>
+                            <p className="p3">um mundo mais ECO</p>
                         </div>
                     </motion.div>
                 }

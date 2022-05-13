@@ -22,11 +22,11 @@ const FormRegister = () => {
 	const schema = yup.object().shape({
         name: yup.string().required('Digite seu nome completo!').min(3, "Digite seu nome com ao menos 03 caracteres!").matches(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/, "Nome Inválido! ") ,
         city: yup.string().required('Digite sua cidade!'),
-        email: yup.string().required('Digite seu Email!').email('Email não é válido').oneOf([yup.ref('email')], 'os Emails não são iguais!'),
+        email: yup.string().required('Digite seu Email!').email('Email não é válido'),
 
         pass: yup.string().required('Digite sua Senha!').matches(
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-        "Deve conter 08 caracteres sendo uma letra maiúscula, uma minúscula, um número e um caractere especial(!,@,#,$,%,&...)"
+        "A senha deve conter 08 caracteres sendo uma letra maiúscula, uma minúscula, um número e um caractere especial(!,@,#,$,%,&...)"
         ),
         passCheck: yup.string().required('Confirme sua senha!').oneOf([yup.ref('pass')], 'As senhas não são iguais!'),
         cpfCnpj: yup.string().required().min(11,'O CPF/CNPJ deve conter no mínimo 11 caracteres').matches(
