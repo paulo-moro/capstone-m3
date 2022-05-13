@@ -57,7 +57,7 @@ const LandingPage = () => {
                 <FormLogin />
             </StyledMain>
             <RawModal/>
-            <Footer/>
+        
         </>
     )
 }
