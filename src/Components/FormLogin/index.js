@@ -23,7 +23,7 @@ const FormLogin = () => {
 
 	const schema = yup.object().shape({
         email: yup.string().required('Digite seu Email!').email('Email não é válido'),
-        pass: yup.string().required('Digite sua Senha!')
+        pass: yup.string().required('Digite sua Senha!').min(4, 'A senha deve ter no mínimo 04 caracteres')
     })
 
     
@@ -57,11 +57,11 @@ const FormLogin = () => {
        password: pass
      })
      .then((res) => {
-       console.log(res.data)
-       localStorage.setItem('@Ecoleta_token', JSON.stringify(res.data.accessToken))
+       localStorage.setItem('@Ecoleta_token', res.data.accessToken)
        handleAuth()
        addUser(res.data.user)
 
+       
        enqueueSnackbar("Login realizado, redirecionando para sua home.", {
 				variant: "success",
 				autoHideDuration: 2000

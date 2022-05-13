@@ -24,10 +24,7 @@ const FormRegister = () => {
         city: yup.string().required('Digite sua cidade!'),
         email: yup.string().required('Digite seu Email!').email('Email não é válido'),
 
-        pass: yup.string().required('Digite sua Senha!').matches(
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-        "A senha deve conter 08 caracteres sendo uma letra maiúscula, uma minúscula, um número e um caractere especial(!,@,#,$,%,&...)"
-        ),
+        pass: yup.string().required('Digite sua Senha!').min(4, 'A senha deve ter no mínimo 4 digitos'),
         passCheck: yup.string().required('Confirme sua senha!').oneOf([yup.ref('pass')], 'As senhas não são iguais!'),
         cpfCnpj: yup.string().required().min(11,'O CPF/CNPJ deve conter no mínimo 11 caracteres').matches(
           /^([0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}|[0-9]{2}\.?[0-9]{3}\.?[0-9]{3}\/?[0-9]{4}\-?[0-9]{2})$/,
@@ -73,8 +70,7 @@ const FormRegister = () => {
         
       })
       .then(({data}) => {
-      console.log(`🤖 ~ .then ~ data`, data)
-      localStorage.setItem('@Ecoleta_token', JSON.stringify(data.accessToken))
+      localStorage.setItem('@Ecoleta_token', data.accessToken)
       addUser(data.user)
       handleAuth()
 
@@ -88,7 +84,6 @@ const FormRegister = () => {
       }, 2000)
       })
       .catch((err) => {
-        console.log(`🤖 ~ submit ~ err`, err)
         enqueueSnackbar("Ops! E-mail já cadastrado, tente novamente.", {
           variant: "error",
           autoHideDuration: 2000,
