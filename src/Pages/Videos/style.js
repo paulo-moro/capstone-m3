@@ -2,70 +2,82 @@ import styled from 'styled-components'
 
 
 export const StyledMain = styled.main`
-width: 100%;
-max-width: 1000px;
-margin: 30px auto;
-display: flex;
-flex-direction: column;
-gap: 25px;
+  width: 100%;
+  
+  margin-top:10px;
+  display: flex;
+  flex-direction: column;
 
-h1 {
-    font-size: 25px;
-    font-weight: bold;
-
-}
-
-section {
-    width: 100%;
+  
+  h1 {
+    font-size: 20px;
+    font-weight: bold;    
+  }
+  .videosList--container{
     display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    gap: 25px;
-    justify-content: center;
-    border-bottom: 2px solid var(--grey2);
+    overflow: hidden;
+    overflow-x: scroll;
+    width: 95%;
+    border-bottom: 2px solid var(--grey2);      
+  }
+  section {
+    width: 380px;
+    display: flex;   
+    flex-direction :column-reverse ;
+    align-items: center;   
+    justify-content: space-between;
     padding-bottom: 20px;
-    padding: 20px;
-}
-section:nth-child(even) {
-  flex-direction: row-reverse;
-}
-
-.video {
-    width: 60%;
-}
-.text {
-
-    width: 35%;
-}
-
-h3 {
+    padding: 10px;
+    height: 500px;
+  }
+  .video {
+    width: 100%;
+    max-width: 700px;
+  }
+  h3 {    
     text-align: center;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 20px;
     margin-bottom: 10px;
-}
- p {
-     text-align: flex-start;
- }
+    font-family: 'Inter';
+  }
+  p {
+      text-align: flex-start;
+      text-align: center;
+  }
 
-
- @media (max-width: 1000px) {
-     section {
-         flex-direction: column-reverse;
-     }
-     h1 {
-        padding-left: 20px;
-     }
-     .video {
-         width: 100%;
-         max-width: 700px;
-     }
-    section:nth-child(even) {
-    flex-direction: column-reverse;
-    }
-     .text {
-         width: 100%;
-         max-width: 700px;
-     }
+ @media(min-width:1000px){
+  .videosList--container{
+    flex-wrap: wrap;
+  }
+  p{
+    width: 300px;
+  }
+  h1{
+    padding: 10px 0px 10px 20px;
+  }
+  section{
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  li:nth-child(even) section{
+    flex-direction: row-reverse;
+  }
+  li{
+    width: 100%;
+    border-bottom: 2px var(--grey2) solid;
+  }
+  .video{
+    max-width: 450px;
+  }
  }
 `
+
+export const StyledFooter = styled.footer`
+  padding: 10px;
+  background-color: var(--grey1);
+  @media(min-width:1000px){
+    display: none;
+  }
+` 
