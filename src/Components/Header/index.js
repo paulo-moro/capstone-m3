@@ -22,8 +22,8 @@ const Header = () => {
                                Saiba Mais
                             </Link> 
                             
-                            <Link to='/chat'  className='navItem'>
-                                Fale Conosco
+                            <Link to='/devs'  className='navItem'>
+                                Quem somos
                             </Link>
                             <li className='navItem' onClick={openModal}>
                                 Faça Parte
