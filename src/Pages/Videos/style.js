@@ -54,6 +54,7 @@ export const StyledMain = styled.main`
   }
   p{
     width: 300px;
+    text-align: left;
   }
   h1{
     padding: 10px 0px 10px 20px;
@@ -62,17 +63,27 @@ export const StyledMain = styled.main`
     width: 100%;
     flex-direction: row;
     justify-content: center;
-    gap: 50px;
+    gap: 250px;
+  }
+  h3{
+    text-align: left;
   }
   li:nth-child(even) section{
     flex-direction: row-reverse;
   }
+  li:nth-child(odd) p{
+    text-align: justify;
+  }
+  li:nth-child(odd) h3{
+    text-align: right;
+  }
+  
   li{
     width: 100%;
     border-bottom: 2px var(--grey2) solid;
   }
   .video{
-    max-width: 450px;
+    max-width: 640px;
   }
  }
 `

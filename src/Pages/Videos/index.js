@@ -10,7 +10,7 @@ function Videos() {
     id:1,
     videoUrl:"https://www.youtube.com/watch?v=hwxIoW3cj4U",
     title:"Plastico",
-    description:"Curiosidades e informações interessantes sobre o plástico e dicas importantes de reciclagem."
+    description:"Curiosidades e informações sobre o plástico e dicas importantes de reciclagem."
   },{
     id:2,
     videoUrl:"https://www.youtube.com/watch?v=R8OvQVV5BtM",
