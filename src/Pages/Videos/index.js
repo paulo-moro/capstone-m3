@@ -20,7 +20,7 @@ function Videos() {
     id:3,
     videoUrl:"https://www.youtube.com/watch?v=xouKg3XwrxY",
     title:"Metal",
-    description:"Venha conferir nesse video, a importancia da reciclagem de metais"
+    description:"Venha conferir nesse video, sobre a importancia da reciclagem de metais"
   },{
     id:4,
     videoUrl:"https://www.youtube.com/watch?v=1VGjNjfF9yM",
@@ -53,7 +53,7 @@ function Videos() {
     <>
       <Header/>
       <StyledMain>
-          <h1>Saiba mais sobre reciclagem:</h1>
+          <h1>Saiba mais sobre reciclagem</h1>
           <ul className='videosList--container'>
           {
             videos?.map(({title,videoUrl,description,id})=>(

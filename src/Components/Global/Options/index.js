@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { ContainerLista } from "./style"
+
 
 export const NavOptions = ({children, location}) =>{
   const [navOpt, setNavOpt] = useState(false)
@@ -20,14 +20,13 @@ export const NavOptions = ({children, location}) =>{
           Sobre Ecoleta
         </li>
         <li>
-          teste
-        </li>
+        </li>        
       </ul>}
       {children}
     </li>
     :location === "login"?
       <li>
-        {navOpt && <ContainerLista>
+        {navOpt && <ul>
           <li>
             Quem somos
           </li>
@@ -37,12 +36,12 @@ export const NavOptions = ({children, location}) =>{
           <li>
             Curiosidades
           </li>
-        </ContainerLista>}
+        </ul>}
         {children}
       </li>
     :location === "home" &&
       <li>
-        {navOpt && <ul >
+        {navOpt && <ul>
           <li>
             Quem somos
           </li>

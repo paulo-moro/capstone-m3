@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const StyledMain = styled.main`
   width: 100%;
-  
+  align-items: center ;
   margin-top:10px;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,8 @@ export const StyledMain = styled.main`
     overflow: hidden;
     overflow-x: scroll;
     width: 95%;
-    border-bottom: 2px solid var(--grey2);      
+    border-bottom: 2px solid var(--grey2);  
+    margin-top:20px ;
   }
   section {
     width: 380px;
@@ -46,6 +47,7 @@ export const StyledMain = styled.main`
       text-align: center;
   }
 
+  
  @media(min-width:1000px){
   .videosList--container{
     flex-wrap: wrap;
@@ -59,7 +61,8 @@ export const StyledMain = styled.main`
   section{
     width: 100%;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 50px;
   }
   li:nth-child(even) section{
     flex-direction: row-reverse;
@@ -76,7 +79,8 @@ export const StyledMain = styled.main`
 
 export const StyledFooter = styled.footer`
   padding: 10px;
-  background-color: var(--grey1);
+  background-color: var(--grey3);
+  border-top:2px var(--grey2) solid;
   @media(min-width:1000px){
     display: none;
   }
