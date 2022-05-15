@@ -45,7 +45,7 @@ function Videos() {
     id:8,
     videoUrl:"https://www.youtube.com/watch?v=tswmX6N8N-4",
     title:"Pilhas e Baterias",
-    description:"Bora destinar corretamente esse resíduo? A Ecoleta ainda não ajuda com esse tipo, mas bora ver o que fazer."
+    description:"Vamos ver como descartar corretamente pilhas e baterias? A Ecoleta ainda não ajuda com esse tipo, mas bora ver o que fazer."
   }])
   const {changeHeader} = useHeader()
   changeHeader("video")

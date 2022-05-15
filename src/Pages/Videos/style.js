@@ -39,7 +39,7 @@ export const StyledMain = styled.main`
     text-align: center;
     font-weight: bold;
     font-size: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-family: 'Inter';
   }
   p {
@@ -54,29 +54,29 @@ export const StyledMain = styled.main`
   }
   p{
     width: 300px;
-    text-align: left;
+    text-align: justify;
+    font-size: 25px;
   }
   h1{
+    font-size: 25px;
     padding: 10px 0px 10px 20px;
   }
   section{
     width: 100%;
     flex-direction: row;
     justify-content: center;
-    gap: 250px;
+    gap:25px;
   }
   h3{
-    text-align: left;
+    text-align: center;
+    font-size: 25px;
   }
   li:nth-child(even) section{
     flex-direction: row-reverse;
   }
   li:nth-child(odd) p{
     text-align: justify;
-  }
-  li:nth-child(odd) h3{
-    text-align: right;
-  }
+  } 
   
   li{
     width: 100%;
@@ -90,7 +90,7 @@ export const StyledMain = styled.main`
 
 export const StyledFooter = styled.footer`
   padding: 10px;
-  background-color: var(--grey3);
+  background-color: var(--grey2);
   border-top:2px var(--grey2) solid;
   @media(min-width:1000px){
     display: none;

@@ -10,7 +10,7 @@ export const StyledNavList = styled.ul`
   
   .navegacao{
     font-size: 50px;
-    color: var(--green2);
+    color: var(--white);
   }
   .navegacao svg:hover{
     cursor: pointer;
