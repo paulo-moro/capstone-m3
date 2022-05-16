@@ -7,6 +7,11 @@ border-bottom: 2px solid var(--grey2);
 box-shadow: 0px 6px 14px -4px rgba(0,0,0,0.12);
 display: flex;
 padding: 0 20px 0 20px;
+    a {
+        text-decoration: none;
+        color: inherit
+    }
+
 
   h1 {
       font-weight: bold;
@@ -33,10 +38,12 @@ padding: 0 20px 0 20px;
       align-items: center;
   }
 
+
   h1:hover {
       filter: brightness(110%);
 
   }
+
 
   ul {
       font-weight: bold;
@@ -52,6 +59,7 @@ padding: 0 20px 0 20px;
       font-size: 20px;
   
   }
+
 
   li:hover {
     color: var(--green2);
@@ -74,6 +82,7 @@ padding: 0 20px 0 20px;
       border: 2px solid var(--green1);
       cursor: pointer;
   }
+
 
   .profilePic:hover {
       filter: brightness(110%);

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import coletor from '../../Images/coletor.jpg'
 import leaf from '../../Images/leaf.png'
 import { useHeader } from "../../Providers/Header"
+import { useModal } from '../../Providers/Modal'
 import Button from '../Button'
 import { StyledHeader } from "./style"
 import {CgProfile} from "react-icons/cg"
@@ -56,6 +57,7 @@ const Header = () => {
       </section>
     </StyledHeader>
   )
+
 }
 
 export default Header
