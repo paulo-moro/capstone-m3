@@ -17,7 +17,7 @@ const Routes = () => {
         <Register/>
       </Route>
 
-      <Route exact path="/client">
+      <Route path="/client/">
         <HomeClient/>
       </Route>
 

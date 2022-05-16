@@ -70,8 +70,7 @@ padding: 0 20px 0 20px;
         height: 60px;
         border-radius: 100%;
         border: 2px solid var(--green1);
-        cursor: pointer;
-    }
+        cursor: pointer;    }
 
     .profilePic:hover {
         filter: brightness(110%);

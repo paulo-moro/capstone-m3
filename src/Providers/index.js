@@ -1,5 +1,7 @@
 import { HeaderProvider } from "./Header"
+import { WasteInfoProvider } from "./InfoWaste"
 import { AuthProvider } from "./IsAuth"
+import { ModalProvider } from "./Modal"
 import { UserProvider } from "./user"
 import { UserWasteProvider } from "./UserRes"
 
@@ -9,7 +11,11 @@ const Providers = ({children}) =>{
     <AuthProvider>
       <UserProvider>
         <UserWasteProvider>
-          <HeaderProvider>{children}</HeaderProvider>
+          <ModalProvider>
+            <WasteInfoProvider>
+              <HeaderProvider>{children}</HeaderProvider>
+            </WasteInfoProvider>
+          </ModalProvider>
         </UserWasteProvider>
       </UserProvider>
     </AuthProvider> 

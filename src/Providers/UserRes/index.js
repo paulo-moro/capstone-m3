@@ -15,7 +15,8 @@ export const UserWasteProvider = ({children}) => {
       
     type === "client" ?
     axios.get(`https://api-capstone-m3.herokuapp.com/waste`,{headers:{"Authorization":`Bearer ${auth}`}})
-    .then(res=>setUserWaste(res.data.filter((waste)=>{      
+    .then(res=>setUserWaste(res.data.filter((waste)=>{  
+         
       return waste.client_id === id
     })))
     .catch(err=>err)
