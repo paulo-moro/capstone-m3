@@ -1,22 +1,25 @@
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
-import Footer from "../../Components/Footer"
 import FormLogin from '../../Components/FormLogin'
-import RawModal from "../../Components/RegisterModal"
 import ImgFlag from "../../Components/ImgFlag"
+import RawModal from "../../Components/RegisterModal"
 import car from '../../Images/car.svg'
 import flower from '../../Images/flower.svg'
 import ride from '../../Images/ride.svg'
 import { useHeader } from "../../Providers/Header"
+import { useModal } from "../../Providers/Modal"
 import { StyledMain } from "./style"
 
 const LandingPage = () => {
     const { changeHeader } = useHeader()
+    const {closeModal} = useModal()
     const [displayFrame, setDisplayFrame] = useState('ride')
+    
 
     useEffect(() => {
         changeHeader('landing')
-
+        
+        closeModal()
         const loopCond = ['flower', 'car', 'ride']
         let counter = 0
 
