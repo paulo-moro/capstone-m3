@@ -15,7 +15,6 @@ const LandingPage = () => {
     const {closeModal} = useModal()
     const [displayFrame, setDisplayFrame] = useState('ride')
     
-
     useEffect(() => {
         changeHeader('landing')
         
@@ -60,7 +59,6 @@ const LandingPage = () => {
                 <FormLogin />
             </StyledMain>
             <RawModal/>
-        
         </>
     )
 }
