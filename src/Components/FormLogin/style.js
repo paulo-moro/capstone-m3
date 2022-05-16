@@ -4,13 +4,11 @@ import styled from 'styled-components'
 export const StyledForm = styled.form`
         display: flex;
         flex-flow: column nowrap;
-        width: 350px;
+
         align-items: center;
-        background-color: var(--white);
-        border-radius: 10px;
+    
         justify-content: center;
         gap: 20px;
-        padding: 30px;
 
 
         h2 {
@@ -21,7 +19,7 @@ export const StyledForm = styled.form`
         border: none;
         background-color: var(--grey3);
         padding: ${props => props.inputPadding};
-        width: 90%;
+        width: 100%;
         border: 2px solid transparent;
         border-radius: 12px;
         text-align: center;
@@ -36,22 +34,74 @@ export const StyledForm = styled.form`
         font-weight: bold;
         font-size: 16px;
         text-align: center;
+        color: var(--black)
     }
     input:valid {
         border: 2px solid var(--green1)
     }
-    a {
-        text-decoration: none;
+    div {
+        width: 108%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    div>label {
+        font-weight: bold;
+    }
+    select {
+        width: 100%;
+        padding: ${props => props.inputPadding};
+        border: none;
+        background-color: var(--grey3);
+        border-radius: 12px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        color: var(--black);
+        border: 2px solid var(--green1)
+    }
+
+    select:focus {
+        border: 2px solid var(--green1)
+    }
+`
+
+
+export const StyledContainer = styled.div`
+    background-color: var(--white);
+    width: 60%;
+    min-width: 300px;
+    border-radius: 10px;
+    gap: 20px;
+
+    display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+
+.register {
         color: var(--black);
         font-weight: bold;
         font-size: 13px;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
     }
 
-    a>span {
+    .register>span {
         color: var(--blue);
     }
 
-    a:hover {
+    .register:hover {
         filter: brightness(120%);
+    }
+
+    @media (min-width: 970px) {
+       & {
+          width: 350px;
+        height: 430px; 
+       } 
     }
 `

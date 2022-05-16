@@ -12,9 +12,13 @@ const Providers = ({children}) =>{
       <UserProvider>
         <UserWasteProvider>
           <ModalProvider>
+<<<<<<< HEAD
             <WasteInfoProvider>
               <HeaderProvider>{children}</HeaderProvider>
             </WasteInfoProvider>
+=======
+          <HeaderProvider>{children}</HeaderProvider>
+>>>>>>> 58922a6872c5516796fab8e633771e5bfb1b57de
           </ModalProvider>
         </UserWasteProvider>
       </UserProvider>
