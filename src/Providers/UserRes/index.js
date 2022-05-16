@@ -12,16 +12,17 @@ export const UserWasteProvider = ({children}) => {
   const {user} = useUser()
 
   const getUserWaste = ({id,type}) => {
-      
+    console.log(id)  
     type === "client" ?
     axios.get(`https://api-capstone-m3.herokuapp.com/waste`,{headers:{"Authorization":`Bearer ${auth}`}})
     .then(res=>setUserWaste(res.data.filter((waste)=>{      
       return waste.client_id === id
     })))
     .catch(err=>err)
-    :type === "collector" &&     
+    :type === "coletor" &&     
     axios.get(`https://api-capstone-m3.herokuapp.com/waste`,{headers:{"Authorization":`Bearer ${auth}`}})
-    .then(res=>setUserWaste(res.data.filter((waste)=>{
+    .then(res=>setUserWaste(res.data.filter((waste)=>{ 
+      // console.log(waste)
       return waste.collector_id === id || waste.status === "pendente"
     })))
     .catch(err=>err)
