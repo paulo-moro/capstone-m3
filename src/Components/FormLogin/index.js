@@ -40,7 +40,11 @@ const FormLogin = () => {
       for (let key in errors) {
           enqueueSnackbar(errors[key].message, {
             variant: "error",
-            autoHideDuration: 5000
+            autoHideDuration: 5000,
+            anchorOrigin: {
+              vertical: 'bottom',
+              horizontal: 'right',
+          },
         })
       }
 }, [errors])
@@ -50,6 +54,10 @@ const FormLogin = () => {
       enqueueSnackbar("Realizando login, aguarde.", {
 				variant: "info",
 				autoHideDuration: 2000,
+        anchorOrigin: {
+          vertical: 'bottom',
+          horizontal: 'right',
+      },
 			});
 
      Api.post('/login', {
@@ -64,7 +72,11 @@ const FormLogin = () => {
        
        enqueueSnackbar("Login realizado, redirecionando para sua home.", {
 				variant: "success",
-				autoHideDuration: 2000
+				autoHideDuration: 2000,
+        anchorOrigin: {
+          vertical: 'bottom',
+          horizontal: 'right',
+      },
       })
 
       setTimeout(() => {
@@ -75,6 +87,10 @@ const FormLogin = () => {
       enqueueSnackbar("Ops! algo deu errado, tente novamente.", {
         variant: "error",
         autoHideDuration: 2000,
+        anchorOrigin: {
+          vertical: 'bottom',
+          horizontal: 'right',
+      }
       });
      })
 

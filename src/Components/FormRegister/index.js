@@ -47,7 +47,11 @@ const FormRegister = () => {
           for (let key in errors) {
               enqueueSnackbar(errors[key].message, {
                 variant: "error",
-                autoHideDuration: 5000
+                autoHideDuration: 5000,
+                anchorOrigin: {
+                  vertical: 'bottom',
+                  horizontal: 'right',
+              }
             })
           }
     }, [errors])
@@ -57,6 +61,10 @@ const FormRegister = () => {
       enqueueSnackbar("Realizando cadastro, aguarde.", {
 				variant: "info",
 				autoHideDuration: 2000,
+        anchorOrigin: {
+          vertical: 'bottom',
+          horizontal: 'right',
+      }
 			});
       Api.post('/register', {
           email: email,
@@ -77,6 +85,10 @@ const FormRegister = () => {
       enqueueSnackbar("Cadastro realizado, redirecionando para sua home.", {
 				variant: "success",
 				autoHideDuration: 2000,
+        anchorOrigin: {
+          vertical: 'bottom',
+          horizontal: 'right',
+      }
 			});
       setTimeout(() => {
         closeModal()
@@ -87,6 +99,10 @@ const FormRegister = () => {
         enqueueSnackbar("Ops! E-mail já cadastrado, tente novamente.", {
           variant: "error",
           autoHideDuration: 2000,
+          anchorOrigin: {
+            vertical: 'bottom',
+            horizontal: 'right',
+        }
         });
       })
     }
