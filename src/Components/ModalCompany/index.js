@@ -2,35 +2,36 @@ import CardCompany from "../CardCompany"
 import {CompanyModal} from "./style"
 import {FaSearch} from "react-icons/fa"
 import {useState} from "react"
+import { useCompany } from "../../Providers/Companies"
+import { useModalCompany } from "../../Providers/openModalCompany"
 
-const ModalCompany = ({companies, setOpenModalCompany}) => {
+const ModalCompany = () => {
   
-  const [filteredProducts, setFilteredProducts] = useState([])
-  const [findWaste, setFindWaste] = useState([])
-  const [search, setSearch] = useState([])
-  const [searchName, setSearchName] = useState(false)
+  const {companies} = useCompany()
+  const {closeCompanyModal} = useModalCompany()
+
+  const [search, setSearch] = useState("")
+  const [searchName, setSearchName] = useState(false) 
   const [searchCategory, setSearchCategory] = useState(false)
-
+  const [filteredCompanies, setFilteredCompanies] = useState([])  
   
-  const closeModalCompany = () => {
-    setOpenModalCompany(false)
-  }
 
-  const showCompanies = ((filteredCompany ) => {
+  const searchCompanies = ((input) => {
     
-    const regex = new RegExp(filteredCompany.toLowerCase(), 'g')
+    const regex = new RegExp(input.toLowerCase(), 'g')
       
-    const filterCompany = companies.filter(company => company.name.toLowerCase().match(regex)) 
-    setFilteredProducts(filterCompany)
+    const filterByInput = companies.filter(company => company.name.toLowerCase().match(regex)) 
+    setFilteredCompanies(filterByInput)
     setSearchName(true)
-    setSearchCategory(false)    
+    setSearchCategory(false) 
+    setSearch("")   
   })
 
-  const WasteFind = (material) => {
-    const found = companies.filter((company) => {
+  const CompanyFind = (material) => {
+    const filterByMaterial = companies.filter((company) => {
       return company.materials.includes(material) 
     })  
-    setFindWaste(found) 
+    setFilteredCompanies(filterByMaterial) 
     setSearchName(false)
     setSearchCategory(true)        
   } 
@@ -38,20 +39,8 @@ const ModalCompany = ({companies, setOpenModalCompany}) => {
   const showAll = () => {
     setSearchName(false)
     setSearchCategory(false)   
-  }
-
-
-  
-      
-      //Minha
-    // companies.map((company) => {
-    //   const found = company.materials.filter(waste => waste === "Papel")
-    //   console.log(company.materials)
-    //   console.log(found)
-    //   setFindWaste(found)
-      
-    // })
-
+  }    
+    
 
   return (
     <CompanyModal>
@@ -67,26 +56,26 @@ const ModalCompany = ({companies, setOpenModalCompany}) => {
               value={search}
               onChange={(e) => setSearch(e.target.value)}  
               ></input>
-              <button className="btnSearch" onClick={() => showCompanies(search)}><FaSearch/></button>
+              <button className="btnSearch" onClick={() => searchCompanies(search)}><FaSearch/></button>
             </div>            
-            <button className="btnCloseModalCompany" onClick={closeModalCompany}>X</button>
+            <button className="btnCloseModalCompany" onClick={closeCompanyModal}>X</button>
           </div>          
         </div>       
         <div className="containerBtnModalCompany">
-          <button className="btnWasteModalCompany" onClick={() => WasteFind("Plástico")}>Plástico</button>
-          <button className="btnWasteModalCompany" onClick={() => WasteFind("Papel")}>Papel</button>
-          <button className="btnWasteModalCompany" onClick={() => WasteFind("Vidro")}>Vidro</button>
-          <button className="btnWasteModalCompany" onClick={() => WasteFind("Metal")}>Metal</button>
-          <button className="btnWasteModalCompany" onClick={() => WasteFind("Madeira")}>Madeira</button>
-          <button className="btnWasteModalCompany" onClick={() => WasteFind("Óleo")}>Óleo</button>
+          <button className="btnWasteModalCompany" onClick={() => CompanyFind("Plástico")}>Plástico</button>
+          <button className="btnWasteModalCompany" onClick={() => CompanyFind("Papel")}>Papel</button>
+          <button className="btnWasteModalCompany" onClick={() => CompanyFind("Vidro")}>Vidro</button>
+          <button className="btnWasteModalCompany" onClick={() => CompanyFind("Metal")}>Metal</button>
+          <button className="btnWasteModalCompany" onClick={() => CompanyFind("Madeira")}>Madeira</button>
+          <button className="btnWasteModalCompany" onClick={() => CompanyFind("Óleo")}>Óleo</button>
           <button className="btnWasteModalCompany" onClick={showAll}>Todos</button>
         </div>
         {
           searchName ?
-          (<CardCompany companies={filteredProducts} />) 
+          (<CardCompany companies={filteredCompanies} />) 
           :
           searchCategory ?
-          (<CardCompany companies={findWaste}/>) 
+          (<CardCompany companies={filteredCompanies}/>) 
           :
           (<CardCompany companies={companies}/>)
         }                    

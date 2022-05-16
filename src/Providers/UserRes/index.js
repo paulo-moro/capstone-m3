@@ -1,6 +1,6 @@
 // historico dos residuos do usuario
 import axios from "axios";
-import { createContext, useContext,  useState } from "react";
+import { createContext, useContext,  useEffect,  useState } from "react";
 import { useAuth } from "../IsAuth";
 import { useUser } from "../user";
 export const UserWasteContext = createContext()
@@ -11,18 +11,20 @@ export const UserWasteProvider = ({children}) => {
   const [userWaste, setUserWaste] = useState([])
   const {user} = useUser()
 
+ 
+
   const getUserWaste = ({id,type}) => {
-    console.log(id)  
+     
     type === "client" ?
     axios.get(`https://api-capstone-m3.herokuapp.com/waste`,{headers:{"Authorization":`Bearer ${auth}`}})
     .then(res=>setUserWaste(res.data.filter((waste)=>{      
       return waste.client_id === id
     })))
     .catch(err=>err)
-    :type === "coletor" &&     
+    :type === "collector" &&     
     axios.get(`https://api-capstone-m3.herokuapp.com/waste`,{headers:{"Authorization":`Bearer ${auth}`}})
     .then(res=>setUserWaste(res.data.filter((waste)=>{ 
-      // console.log(waste)
+     
       return waste.collector_id === id || waste.status === "pendente"
     })))
     .catch(err=>err)

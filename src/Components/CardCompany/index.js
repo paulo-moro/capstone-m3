@@ -1,43 +1,46 @@
 import {CardContainer, StyledWaste} from "./style"
 import Button from "../Button"
 import company1 from "../../Images/company1.webp"
+import { useEffect, useState } from "react"
+import Api from "../../Api"
+import { useAuth } from "../../Providers/IsAuth"
 
-const CardCompany = ({companies}) => {
+const CardCompany = ({companies}) => { 
 
   return (
     <CardContainer>  
       {
         companies?.map((company) => (
-            <li key={company.id}>
-            <img src={company1} alt={company.name}/>
-            <h2>{company.name}</h2>
-            <h3>{company.city}</h3>
-            <div>
-              {                
-                company.materials?.map((material, index) => {
-                  return (
-                    material === "Papel" ?             
-                  (<StyledWaste background="var(--blue)" key={index}><p>{material}</p></StyledWaste>)
-                  :
-                  material === "Plástico" ?
-                  (<StyledWaste background="var(--red)" key={index}><p>{material}</p></StyledWaste>)
-                  :
-                  material === "Vidro" ?
-                  (<StyledWaste background="var(--green3)" key={index}><p>{material}</p></StyledWaste>)
-                  :
-                  material === "Óleo" ?
-                  (<StyledWaste background="var(--orange)" key={index}><p>{material}</p></StyledWaste>)
-                  :
-                  material === "Madeira" ?
-                  (<StyledWaste background="var(--brown)" key={index}><p>{material}</p></StyledWaste>)
-                  :
-                  material === "Metal" &&
-                  (<StyledWaste background="var(--yellow)" key={index}><p>{material}</p></StyledWaste>)
-                  )})              
-              }
-            </div>        
-            <Button>Entregue</Button>
-            </li>))          
+        <li key={company.id}>
+          <img src={company1} alt={company.name}/>
+          <h2>{company.name}</h2>
+          <h3>{company.city}</h3>
+          <div>
+            {                
+              company.materials?.map((material, index) => {
+                return (
+                  material === "Papel" ?             
+                (<StyledWaste background="var(--blue)" key={index}><p>{material}</p></StyledWaste>)
+                :
+                material === "Plástico" ?
+                (<StyledWaste background="var(--red)" key={index}><p>{material}</p></StyledWaste>)
+                :
+                material === "Vidro" ?
+                (<StyledWaste background="var(--green3)" key={index}><p>{material}</p></StyledWaste>)
+                :
+                material === "Óleo" ?
+                (<StyledWaste background="var(--orange)" key={index}><p>{material}</p></StyledWaste>)
+                :
+                material === "Madeira" ?
+                (<StyledWaste background="var(--brown)" key={index}><p>{material}</p></StyledWaste>)
+                :
+                material === "Metal" &&
+                (<StyledWaste background="var(--yellow)" key={index}><p>{material}</p></StyledWaste>)
+                )})              
+            }
+          </div>        
+            <Button>Escolher</Button>
+        </li>))          
       }         
     </CardContainer>
   )

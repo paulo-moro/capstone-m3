@@ -8,6 +8,8 @@ import {FaWallet, FaMapMarkerAlt} from "react-icons/fa"
 import { useUserWaste } from "../../Providers/UserRes"
 import { useUser } from "./../../Providers/user"
 import { useAuth } from "./../../Providers/IsAuth"
+import { useModalCompany } from "../../Providers/openModalCompany"
+
 
 
 
@@ -16,69 +18,49 @@ const HomeCollector = () => {
   const { getUserWaste, changeWasteProps, userWaste } = useUserWaste()
   const { user, addUser } = useUser()
   const { handleAuth, auth } = useAuth()
+  const {changeHeader} = useHeader() 
   
-
+  const {modalCompany, openCompanyModal} = useModalCompany()
   const [openModalCompany, setOpenModalCompany] = useState(false)
-  const [openModalWaste, setOpenModalWaste] = useState(false)
-  const [companies, setCompanies] = useState([])
-  
+  const [openModalWaste, setOpenModalWaste] = useState(false)  
+  const [filtered,setFiltered] = useState()
 
-  localStorage.setItem("@Ecoleta_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVjb2NvbGV0b3JAZ21haWwuY29tIiwiaWF0IjoxNjUyNzE1MDI4LCJleHAiOjE2NTI3MTg2MjgsInN1YiI6IjQifQ.ZoRIC8nWQWeckF84vyxS9I5ZpKW05OLFDKz_hx8wH1Y")
-
-  
-  const Companies = Api.get("/companies", {headers: {Authorization: `Bearer ${auth}`}})
-  .then((res) => {
-    setCompanies(res.data)})
-  
-  // Api.get("/waste", {headers: {Authorization: `Bearer ${auth}`}})
-  // .then((res) => {
-  //   const filteredWaste = res.data.filter((waste) => waste.status === "pendente")
-  //   setWastes(filteredWaste)    
-
-    // const userHistory = res.data.filter((waste) => waste.id === )
-  // })
-      
-  const HandleOpenModalCompany = () => {
-    setOpenModalCompany(true)
-  }
+  localStorage.setItem("@Ecoleta_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlQHRlc3RlMS5jb20iLCJpYXQiOjE2NTI3NDEwNTAsImV4cCI6MTY1Mjc0NDY1MCwic3ViIjoiNSJ9.nsXJwXsmp0jjbVxMRz9JWRLDvK8z6KpZ9zhQSXXkXbA")
+  console.log(modalCompany)
+ 
 
   const HandleOpenModalWaste = () => {
     setOpenModalWaste(true)
   }
 
-  const {changeHeader} = useHeader()
-
+  
+ 
   useEffect(() => {
-    addUser({
-      "email": "ecocoletor@gmail.com",
-      "name": "ecocoletor",
-      "image": "url.img",
-      "city": "lugar nenhum",
-      "type": "coletor",
-      "wallet": 1,
-      "id": 4
-    })
     handleAuth()
     getUserWaste(user)
-    changeHeader('homeCollector')     
-    }, [])
-    
-    console.log(userWaste)
+    changeHeader('homeCollector')   
+    setFiltered(userWaste)
+  }, [])
+       
+    const filterByStatus = (event)=>{
+      setFiltered(userWaste.filter((waste)=>{
+        return event.target.value === waste.category
+      }))
+    } 
 
   return(
     <CollectorHome>      
       <section className="containerHomeCollector">
         <div className="containerBtnHomeCollector">
-          <button className="btnHomeCollector" onClick={HandleOpenModalCompany}>Empresas</button>
-          <button className="btnHomeCollector" onClick={HandleOpenModalWaste}>Coletas</button>
+          <button className="btnHomeCollector" onClick={openCompanyModal}>Empresas</button>
+          <button className="btnHomeCollector" onClick={HandleOpenModalWaste}>Coletas</button>       
           
-          <button className="btnHomeCollector" onClick={() => getUserWaste(user)}>Residuos</button>
         </div>  
         {
-          openModalCompany && <ModalCompany companies={companies} setOpenModalCompany={setOpenModalCompany} />
+          modalCompany && <ModalCompany/>
         }  
         {
-          openModalWaste && <ModalWaste getUserWaste={getUserWaste} setOpenModalWaste={setOpenModalWaste}/>
+          openModalWaste && <ModalWaste/>
         }
 
         {         
@@ -88,7 +70,16 @@ const HomeCollector = () => {
                 <h2 className="userInformationH2 userInformationH2Single"><FaMapMarkerAlt/> {user.city}</h2>
               </div>      
             <h1 className="welcomeUser">Bem vindo, {user.name}!</h1>                 
-            <h3 className="userInformationH3">Minhas coletas:</h3>     
+            <h3 className="userInformationH3">Minhas coletas:</h3>
+            <ul>
+              {filtered?.map(({id,category,status})=>(
+                <li key={id}>
+                  <h2>{category}</h2>
+
+                  <span>{status}</span> 
+                </li>
+              ))}  
+            </ul>     
           </div>                
         }        
       </section>      
