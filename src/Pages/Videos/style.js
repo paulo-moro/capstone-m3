@@ -53,8 +53,8 @@ export const StyledMain = styled.main`
     flex-wrap: wrap;
   }
   p{
-    width: 300px;
-    text-align: justify;
+    width: 330px;
+    text-align: left;
     font-size: 25px;
   }
   h1{
@@ -75,7 +75,8 @@ export const StyledMain = styled.main`
     flex-direction: row-reverse;
   }
   li:nth-child(odd) p{
-    text-align: justify;
+    text-align: left;
+   
   } 
   
   li{
