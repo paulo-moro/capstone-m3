@@ -2,8 +2,8 @@ import CardCompany from "../CardCompany"
 import {CompanyModal} from "./style"
 import {FaSearch} from "react-icons/fa"
 import {useState} from "react"
-import { useCompany } from "../../Providers/Companies"
-import { useModalCompany } from "../../Providers/openModalCompany"
+import { useCompany } from "../../../../Providers/Companies"
+import { useModalCompany } from "./../../../../Providers/openModalCompany"
 
 const ModalCompany = () => {
   
@@ -16,10 +16,8 @@ const ModalCompany = () => {
   const [filteredCompanies, setFilteredCompanies] = useState([])  
   
 
-  const searchCompanies = ((input) => {
-    
-    const regex = new RegExp(input.toLowerCase(), 'g')
-      
+  const searchCompanies = ((input) => {    
+    const regex = new RegExp(input.toLowerCase(), 'g')      
     const filterByInput = companies.filter(company => company.name.toLowerCase().match(regex)) 
     setFilteredCompanies(filterByInput)
     setSearchName(true)

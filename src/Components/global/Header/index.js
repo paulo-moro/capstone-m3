@@ -1,8 +1,7 @@
-import coletor from '../../Images/coletor.jpg'
-import leaf from '../../Images/leaf.png'
-import { useHeader } from "../../Providers/Header"
+import coletor from '../../../Images/coletor.jpg'
+import leaf from '../../../Images/leaf.png'
+import { useHeader } from "../../../Providers/Header"
 import Button from '../Button'
-import SearchBox from "../SearchBox"
 import { StyledHeader } from "./style"
 
 const Header = () => {

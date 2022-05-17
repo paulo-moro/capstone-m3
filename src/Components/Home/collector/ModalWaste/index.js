@@ -1,24 +1,27 @@
 import CardWaste from "../CardWaste"
 import {WasteModal} from "./style"
 import {useState} from "react"
-import { useModal } from "../../Providers/Modal"
-import { useUserWaste } from "../../Providers/UserRes"
+import { useUserWaste } from "./../../../../Providers/UserRes"
+import { useModalWaste } from "./../../../../Providers/openModalWaste"
 
 
 
-const ModalWaste = ({wastes, setOpenModalWaste}) => {
-  const [findWaste, setFindWaste] = useState([])
-  const { closeModal } = useModal()
-  const { getUserWaste } = useUserWaste()
+const ModalWaste = () => {
+  
+  const { userWaste } = useUserWaste()
+  const {closeWasteModal} = useModalWaste()
 
-  const closeModalWaste = () => {
-    setOpenModalWaste(false)
+  const [filteredWaste, setFilteredWaste] = useState([])
+  const [searchCategory, setSearchCategory] = useState(false)
+ 
+  const userAvailableWaste = () =>{
+    return userWaste.filter((waste)=>waste.status === "pendente")
   }
 
   const WasteFind = (material) => {
-    const found = wastes.filter((waste) => material === waste.category) 
-    setFindWaste(found) 
-    console.log(material)
+    const filterByMaterial = userWaste.filter((waste) =>  material === waste.category )  
+    setFilteredWaste(filterByMaterial) 
+    setSearchCategory(true)        
   } 
 
   return (
@@ -26,7 +29,7 @@ const ModalWaste = ({wastes, setOpenModalWaste}) => {
     <div className="containerModalWaste">
       <div className="containerHeaderWaste">
         <h1 className="titleModalWaste">Coletas:</h1>
-        <button className="btnCloseModalWaste" onClick={closeModalWaste}>X</button>
+        <button className="btnCloseModalWaste" onClick={closeWasteModal}>X</button>
       </div>       
       <div className="containerBtnModalWaste">
         <button className="btnWasteModalWaste" onClick={() => WasteFind("Plástico")}>Plástico</button>
@@ -35,12 +38,13 @@ const ModalWaste = ({wastes, setOpenModalWaste}) => {
         <button className="btnWasteModalWaste" onClick={() => WasteFind("Metal")}>Metal</button>
         <button className="btnWasteModalWaste" onClick={() => WasteFind("Madeira")}>Madeira</button>
         <button className="btnWasteModalWaste" onClick={() => WasteFind("Óleo")}>Óleo</button>
+        <button className="btnWasteModalWaste" onClick={() => setSearchCategory(false)}>Todos</button>
       </div>
       {
-        findWaste.length > 0 ?
-        (<CardWaste wastes={findWaste}/>)
+        searchCategory?
+        (<CardWaste wastes={filteredWaste}/>)
         :
-        (<CardWaste wastes={wastes}/>)
+        (<CardWaste wastes={()=>userAvailableWaste()}/>)
       }             
     </div>      
   </WasteModal>    

@@ -9,6 +9,7 @@ export const CollectorHome = styled.main`
 
   .containerHomeCollector {
     width: 71%;
+    max-width: 250px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -46,10 +47,16 @@ export const CollectorHome = styled.main`
     flex-direction: column;
   }  
 
+    
+
   .welcomeUser {
     font-size: 20px;
     font-weight: bold;
     text-align: center;
+
+    @media(min-width:550px){
+      
+    }
 
     @media (min-width: 768px) {
       font-size: 30px;
@@ -86,6 +93,11 @@ export const CollectorHome = styled.main`
     display: flex;
     gap: 0.5rem;
 
+    @media(min-width:550px){
+      .containerHomeCollector {
+        max-width:450px;
+      }
+    }
     @media (min-width: 1024px) {
       font-size: 30px;
     }
@@ -118,4 +130,48 @@ export const CollectorHome = styled.main`
   }
 `
 
+export const StatusBox = styled.span`
+  padding: 5px;
+  background-color: ${props=>props.background};
+  border-radius: 4px;
+  color:var(--white);
+  font-family: 'Inter';
+  font-weight: 500;
+`
 
+export const WasteHistoryList = styled.ul`
+  width: 250px;
+  background-color: var(--green5);
+  min-height: 300px;
+  height: 50vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding: 5px;
+  border-radius: 5px;
+  
+  li{
+    background-color: var(--grey2);
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+    align-items: center;
+    border-radius: 5px;
+    margin: 5px 0px;
+  }
+  li h2{
+    font-family: 'Inter';
+    font-weight: 700;
+
+  }
+  li span{
+    padding: 5px;
+    background-color: var(--yellow);
+    border-radius: 4px;
+    color:var(--white);
+    font-family: 'Inter';
+    font-weight: 500;
+  }
+  @media(min-width:550px){
+    max-width: 450px;
+  }
+`

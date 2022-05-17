@@ -1,12 +1,10 @@
 import {CardContainer, StyledWaste} from "./style"
-import Button from "../Button"
-import company1 from "../../Images/company1.webp"
-import { useEffect, useState } from "react"
-import Api from "../../Api"
-import { useAuth } from "../../Providers/IsAuth"
+import Button from "./../../../global/Button"
+import company1 from "../../../../Images/company1.webp"
+import { useTakeWaste } from "../../../../Providers/takeWaste"
 
 const CardCompany = ({companies}) => { 
-
+  const {choseCompany} = useTakeWaste()
   return (
     <CardContainer>  
       {
@@ -39,7 +37,7 @@ const CardCompany = ({companies}) => {
                 )})              
             }
           </div>        
-            <Button>Escolher</Button>
+            <Button onClick={()=>choseCompany(company)}>Escolher</Button>
         </li>))          
       }         
     </CardContainer>

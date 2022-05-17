@@ -1,4 +1,4 @@
-import Header from "./Components/Header";
+import Header from "./Components/global/Header";
 import Providers from "./Providers";
 import Routes from "./Routes";
 import GlobalStyle from "./Styles/globalStyle";
