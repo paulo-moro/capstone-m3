@@ -1,10 +1,10 @@
 import React from 'react'
-import DevCard from '../../Components/DevCard'
-import gian from '../../Images/gian.jpg'
-import marcelo from '../../Images/marcelo.png'
-import andrea from '../../Images/andrea.jpg'
-import paulo from '../../Images/paulo.jpg'
-import luis from '../../Images/luis.jpg'
+import DevCard from '../../Components/DevPage-Components/DevCard'
+import gian from '../../Assets/Images/gian.jpg'
+import marcelo from '../../Assets/Images/marcelo.png'
+import andrea from '../../Assets/Images/andrea.jpg'
+import paulo from '../../Assets/Images/paulo.jpg'
+import luis from '../../Assets/Images/luis.jpg'
 import { StyledMain } from './style'
 
 const Devs = () => {

@@ -44,19 +44,17 @@ padding: 0 20px 0 20px;
 
   }
 
-<<<<<<< HEAD
     .profilePic {
         width: 60px;
         height: 60px;
         border-radius: 100%;
         border: 2px solid var(--green1);
         cursor: pointer;    }
-=======
->>>>>>> 58922a6872c5516796fab8e633771e5bfb1b57de
 
   ul {
       font-weight: bold;
       display: flex;
+      flex-direction:row;
       gap: 25px;
   }
 

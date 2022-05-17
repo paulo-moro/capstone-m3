@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import ReactPlayer from 'react-player'
-import Header from '../../Components/Header'
 import { StyledFooter, StyledMain } from './style'
 import { NavSelection } from '../../Components/Global/NavSelection'
 import { useHeader } from '../../Providers/Header'
@@ -51,7 +50,6 @@ function Videos() {
   changeHeader("video")
     return (
     <>
-      <Header/>
       <StyledMain>
           <h1>Saiba mais sobre reciclagem</h1>
           <ul className='videosList--container'>

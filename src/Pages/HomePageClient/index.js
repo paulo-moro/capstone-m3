@@ -3,54 +3,37 @@ import { useHeader } from "../../Providers/Header"
 import { useModal } from "../../Providers/Modal"
 import { useUser } from "../../Providers/user"
 import { ClientDiv } from "./style"
-import { ClientListWaste } from "../../Components/ClientWaste"
-import FormRegisterWaste from "../../Components/registerWaste"
-import Button from "../../Components/Button"
-import RegisterAndChangeModal from '../../Components/RegisterAndChangeModal'
-import ChangeWasteClient from "../../Components/ChangeWasteClient"
-import { CustomerHistory } from "../../Components/CustomerHistory"
+import { ClientListWaste } from "../../Components/ClientPage-Components/ClientWaste"
+import FormRegisterWaste from "../../Components/ClientPage-Components/registerWaste"
+import Button from "../../Components/Global/Button"
+import RegisterAndChangeModal from '../../Components/ClientPage-Components/RegisterAndChangeModal'
+import ChangeWasteClient from "../../Components/ClientPage-Components/ChangeWasteClient"
+import {CustomerHistory} from '../../Components/ClientPage-Components/CustomerHistory'
 import {RiCoinsFill} from 'react-icons/ri'
 import {FaMapMarkerAlt} from 'react-icons/fa'
-
-// testes
-import Api from "../../Api"
-import axios from "axios"
+import { useUserWaste } from "../../Providers/UserRes"
 
 
 
 const HomeClient = () => {
 	const {changeHeader} = useHeader()
 	const {modal, openModal, closeModal, secondModal, openSecondModal, closeSecondModal} = useModal()
+	const {user} = useUser()
+	const {getUserWaste} = useUserWaste()
 	const [isColeta, setIsColeta] = useState(true)
 	const [inputCity, setInputCity] = useState(false)
 
 	useEffect(() => {
 		changeHeader('homeClient')
 		closeModal()
+		getUserWaste(user)
 	}, [])
+
 
 	const changeCity = () => {
 		setInputCity(true)
 	}
 
-	 // FUNÇAÕ TESTES
-	const {user, addUser} = useUser()
-
-  const userAndAuth = (user, authUser) => {
-		addUser(user)
-		localStorage.setItem("@Ecoleta_token", authUser)
-  }
-
-	const login = () => {
-    Api.post("/login", {
-      email: "client@gmail.com",
-      password: "123456"
-    })
-    .then((res)=> userAndAuth(res.data.user, res.data.accessToken))
-    .catch((err)=> console.log(err))
-  }
-
-	
 
 	return(
 		<>
@@ -64,10 +47,7 @@ const HomeClient = () => {
 					<button>Enviar</button>
 					</form>
 					}
-					
 				</div>
-				<button onClick={login}>login</button>
-				<button>listar Resíduo</button>
 				<section>
 					<div className="image"></div>
 					<p>Solicite uma nova coleta</p>
@@ -99,9 +79,3 @@ const HomeClient = () => {
 }
 
 export default HomeClient
-
-
-
-
-
-

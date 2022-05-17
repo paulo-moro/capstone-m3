@@ -1,9 +1,9 @@
 
-import { useUserWaste } from "../../Providers/UserRes"
-import { useUser } from "../../Providers/user"
+import { useUserWaste } from "../../../Providers/UserRes"
+import { useUser } from "../../../Providers/user"
 import { ListWasteClient } from "./style"
-import { useModal } from "../../Providers/Modal"
-import { useInfoWaste } from "../../Providers/InfoWaste"
+import { useModal } from "../../../Providers/Modal"
+import { useInfoWaste } from "../../../Providers/InfoWaste"
 
 
 
@@ -24,7 +24,7 @@ export const ClientListWaste = () => {
   return(
     <ListWasteClient>
       {userWaste.map((item, index)=> 
-      item.status === "pendente" &&
+      item.status === "Pendente" &&
         <li onClick={()=> changeWaste(item)} key={index}>
           {/* <img src={item.image}/> */}
           <h3>{item.category}</h3>

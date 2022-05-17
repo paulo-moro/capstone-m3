@@ -1,11 +1,11 @@
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
-import FormLogin from '../../Components/FormLogin'
-import ImgFlag from "../../Components/ImgFlag"
-import RawModal from "../../Components/RegisterModal"
-import car from '../../Images/car.svg'
-import flower from '../../Images/flower.svg'
-import ride from '../../Images/ride.svg'
+import FormLogin from '../../Components/LandingPage-Components/FormLogin'
+import ImgFlag from "../../Components/LandingPage-Components/ImgFlag"
+import RawModal from "../../Components/LandingPage-Components/RegisterModal"
+import car from '../../Assets/Images/car.svg'
+import flower from '../../Assets/Images/flower.svg'
+import ride from '../../Assets/Images/ride.svg'
 import { useHeader } from "../../Providers/Header"
 import { useModal } from "../../Providers/Modal"
 import { StyledMain } from "./style"

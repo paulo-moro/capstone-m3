@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import { useModal } from '../../Providers/Modal';
+import { useModal } from '../../../Providers/Modal';
 import FormRegister from '../FormRegister';
 
 const style = {

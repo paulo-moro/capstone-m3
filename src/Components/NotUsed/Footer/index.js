@@ -1,5 +1,5 @@
 import React from 'react'
-import DevCard from '../DevCard'
+import DevCard from '../../DevPage-Components/DevCard'
 import gian from '../../Images/gian.jpg'
 import marcelo from '../../Images/marcelo.png'
 import andrea from '../../Images/andrea.jpg'

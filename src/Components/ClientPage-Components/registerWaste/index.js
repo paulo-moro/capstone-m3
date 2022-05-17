@@ -1,12 +1,13 @@
 import { useState } from "react"
 import { useForm } from "react-hook-form"
-import { useUser } from "../../Providers/user"
-import { useAuth } from "../../Providers/IsAuth"
+import { useUser } from "../../../Providers/user"
+import { useAuth } from "../../../Providers/IsAuth"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import { RegisterWasteStyle } from "./style"
-import Api from "../../Api"
-import Button from "../Button"
+import Api from "../../../Api"
+import Button from "../../Global/Button"
+import axios from "axios"
 
 const FormRegisterWaste = () => {
   const [isOleo, setIsOleo] = useState(false)
@@ -23,7 +24,6 @@ const FormRegisterWaste = () => {
 	})
 
 	const cadastrar = (data) => {
-
 		const dataBase= {
 			category: data.category,
 			measure: data.measure,
@@ -39,10 +39,14 @@ const FormRegisterWaste = () => {
 		.then((res)=> console.log(res))
 		.catch((err)=> console.log(err))
 	}
+
+
+	
+	
 	
 	return (
 		<RegisterWasteStyle onSubmit={handleSubmit(cadastrar)}>
-			<input type="file" placeholder="file"/>
+			<input type="file" placeholder="file" {...register("image")}/>
 			<select onClick={(e)=> e.target.value === "Óleo" ? setIsOleo(true): setIsOleo(false)} {...register("category")}>
 				<option>Papel</option>
 				<option>Plastico</option>

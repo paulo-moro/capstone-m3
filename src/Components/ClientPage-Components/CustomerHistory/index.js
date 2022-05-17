@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { useUser } from "../../Providers/user"
-import { useUserWaste } from "../../Providers/UserRes"
+import { useUser } from "../../../Providers/user"
+import { useUserWaste } from "../../../Providers/UserRes"
 import { ClientHistoric } from "./style"
 
 
@@ -13,7 +13,7 @@ export const CustomerHistory = () => {
 	getUserWaste(user)
 
 	useEffect(()=>{
-		const filter = userWaste.filter((item)=> item.status !== "pendente")
+		const filter = userWaste.filter((item)=> item.status !== "Pendente")
 		setHistoric(filter)
 	},[])
 

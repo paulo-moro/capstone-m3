@@ -4,11 +4,11 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import * as yup from "yup";
-import Api from "../../Api";
-import { useAuth } from "../../Providers/IsAuth";
-import { useModal } from "../../Providers/Modal";
-import { useUser } from "../../Providers/user";
-import Button from "../Button";
+import Api from "../../../Api";
+import { useAuth } from "../../../Providers/IsAuth";
+import { useModal } from "../../../Providers/Modal";
+import { useUser } from "../../../Providers/user";
+import Button from "../../Global/Button";
 import { StyledForm } from "../FormLogin/style";
 
 const FormRegister = () => {

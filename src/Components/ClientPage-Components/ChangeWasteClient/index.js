@@ -1,13 +1,12 @@
 
-import { useUserWaste } from "../../Providers/UserRes"
-import { useInfoWaste } from "../../Providers/InfoWaste"
-import { useModal } from "../../Providers/Modal"
+import { useUserWaste } from "../../../Providers/UserRes"
+import { useInfoWaste } from "../../../Providers/InfoWaste"
+import { useModal } from "../../../Providers/Modal"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from 'yup'
 import { FormChange } from "./style"
-import { useUser } from "../../Providers/user"
-import { ConstructionOutlined } from "@mui/icons-material"
+import { useUser } from "../../../Providers/user"
 
 const ChangeWasteClient = () => {
   const {changeWasteProps, rmvClientWaste} = useUserWaste()
