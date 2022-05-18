@@ -165,7 +165,6 @@ export const WasteHistoryList = styled.ul`
   }
   li span{
     padding: 5px;
-    background-color: var(--yellow);
     border-radius: 4px;
     color:var(--white);
     font-family: 'Inter';

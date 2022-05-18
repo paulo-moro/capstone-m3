@@ -2,70 +2,73 @@
 import { useEffect, useState  } from "react"
 import { useHeader } from "../../Providers/Header"
 import { CollectorHome, StatusBox, WasteHistoryList } from "./style"
-import ModalCompany from "../../Components/Home/collector/ModalCompany"
-import ModalWaste from "../../Components/Home/collector/ModalWaste"
 import {FaWallet, FaMapMarkerAlt} from "react-icons/fa"
 import { useUserWaste } from "../../Providers/UserRes"
 import { useUser } from "./../../Providers/user"
 import { useAuth } from "./../../Providers/IsAuth"
-import { useModalCompany } from "../../Providers/openModalCompany"
-import { useModalWaste } from "../../Providers/openModalWaste"
 import { useModal } from "../../Providers/Modal"
-import { FinishingModal } from "../../Components/Home/collector/FinishingModal"
 import { useWasteData } from "../../Providers/WasteData"
+import { useModalType } from "../../Providers/ModalTypes"
+import RawModal from "../../Components/RegisterModal"
+import Api from "../../Api"
+
 
 
 
 
 const HomeCollector = () => {
-
-  const { getUserWaste, userWaste } = useUserWaste()
-  const { user } = useUser()
-  const { handleAuth, auth } = useAuth()
-  const {changeHeader} = useHeader()   
-  const {modalCompany, openCompanyModal} = useModalCompany()
-  const {modalWaste, openWasteModal} = useModalWaste()
-  const {openModal,modal}= useModal()
+  const { user, addUser } = useUser()
+  const { handleAuth,auth } = useAuth()
+  const {changeHeader} = useHeader() 
   const {addWasteData} = useWasteData()
+  const {openModal,modal,closeModal}= useModal()
+  const {modalType, changeModal} = useModalType()
+  const { userWaste,setUserWaste } = useUserWaste()  
 
   const [filtered,setFiltered] = useState()
-  
-  localStorage.setItem("@Ecoleta_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlQHRlc3RlMS5jb20iLCJpYXQiOjE2NTI3ODMxMDIsImV4cCI6MTY1Mjc4NjcwMiwic3ViIjoiNCJ9.fU_JJlD2KliBSrOdgtOdB7YbubpiBl7qQ4-0KlAH03M")
-  
- 
- 
-  useEffect(() => {
+
+
+  useEffect(() => {    
+    user && localStorage.setItem("@Ecoleta_user", JSON.stringify(user))
+    addUser(JSON.parse(localStorage.getItem("@Ecoleta_user")))
+    auth && Api.get("/waste",{
+      headers:
+      {"Authorization":`Bearer ${auth}`}}).then(res=> setUserWaste(res.data))       
     handleAuth()
-    getUserWaste(user)
-    changeHeader('homeCollector')   
+    auth && closeModal()
+    auth && changeHeader('homeCollector')      
+    }, [])
+
+  useEffect(()=>{
     setFiltered(userWaste.filter((waste)=> waste.collector_id === user.id))
-  }, [])
-       
-    const filterByStatus = (event)=>{
-      setFiltered(userWaste.filter((waste)=>{
-        return event.target.value === waste.category
-      }))
-    } 
+  },[userWaste])
 
-    const handleFinishModal = () =>{
-      openModal()
-      addWasteData()
+  const filterByStatus = (event)=>{
+    setFiltered(filtered.filter((waste)=>{
+      return event.target.value === waste.category
+    }))
+  }     
 
-    }
+  const handleWasteModal = () =>{
+    openModal()
+    changeModal("waste")   
+
+  }
+  
+  const handleFinishModal = (waste) =>{
+    openModal()
+    changeModal("finish")
+    addWasteData(waste)
+
+  }
 
   return(
     <CollectorHome>      
       <section className="containerHomeCollector">
         
         {
-          modalCompany && <ModalCompany/>
-        }  
-        {
-          modalWaste && <ModalWaste/>
-        }
-        {
-          modal && <FinishingModal/>
-        }
+          modal && <RawModal type={modalType}/>
+        }        
         
         {         
           <div className="userContainerInformation">
@@ -74,53 +77,22 @@ const HomeCollector = () => {
                 <h2 className="userInformationH2"><FaWallet/> R${user.wallet},00</h2>
                 <h2 className="userInformationH2 userInformationH2Single"><FaMapMarkerAlt/> {user.city}</h2>
             </div>  
-          <div className="containerBtnHomeCollector">
-            <button className="btnHomeCollector" onClick={openCompanyModal}>Empresas</button>
-            <button className="btnHomeCollector" onClick={openWasteModal}>Coletas</button>         
+          <div className="containerBtnHomeCollector">            
+            <button className="btnHomeCollector" onClick={handleWasteModal}>Coletas</button>         
           </div>      
               <h3 className="userInformationH3">Minhas coletas:</h3>
             <WasteHistoryList>
-              {filtered?.map(({id,category,status})=>(
-                <li key={id} onClick={handleFinishModal}>
-                  <h2>{category}</h2>
-                  {status === "pendente"?<StatusBox background={"var(--yellow)"}>{status}</StatusBox>
-                  :status === "reservado"?<StatusBox background={"var(--orange)"}>{status}</StatusBox>
-                  :status === "entregue"?<StatusBox background={"var(--green1)"}>{status}</StatusBox>
-                  :<StatusBox background={"var(--red)"}>{status}</StatusBox>
+              {filtered?.map((waste)=>(
+                <li key={waste.id} onClick={()=>handleFinishModal(waste)}>
+                  <h2>{waste.category}</h2>
+                  {waste.status.toLowerCase() === "pendente"?<StatusBox background={"var(--yellow)"}>{waste.status}</StatusBox>
+                  :waste.status.toLowerCase() === "reservado"?<StatusBox background={"var(--orange)"}>{waste.status}</StatusBox>
+                  :waste.status === "Entregue"?<StatusBox background={"var(--green1)"}>{waste.status}</StatusBox>
+                  :<StatusBox background={"var(--red)"}>{waste.status}</StatusBox>
                   }                   
-                </li>
+                </li>              
               ))}  
-              <li onClick={handleFinishModal}><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>
-              <li><h2>Exemplo</h2> <span>Reservado</span></li>  
+                
             </WasteHistoryList>     
           </div>                
         }        

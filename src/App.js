@@ -1,21 +1,16 @@
-import Header from "./Components/global/Header";
-import Providers from "./Providers";
+import Header from "./Components/Header";
 import Routes from "./Routes";
 import GlobalStyle from "./Styles/globalStyle";
 
 
 function App() {
   return (
-    <div className="App">
-      <Providers>
+    <div className="App">   
         <GlobalStyle/>
         <Header />
         <Routes/>
-      </Providers>      
     </div>
   );
 }
 
 export default App;
-
-

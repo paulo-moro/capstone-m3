@@ -8,14 +8,14 @@ export const CompaniesProvider = ({children}) => {
     
   const [companies, setCompanies] = useState([])
   const {auth} = useAuth()
-
+  
   const Companies =()=> Api.get("/companies", {headers: {Authorization: `Bearer ${auth}`}})
   .then((res) => {setCompanies(res.data)})
 
   useEffect(()=>{
     Companies()
-  })
-
+  },[])
+  
   return(
     <CompaniesContext.Provider value={{companies}}>
       {children}

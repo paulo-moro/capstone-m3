@@ -1,22 +1,11 @@
 import { createContext, useContext, useState } from "react";
-import { useUser } from "../user";
 
 export const WasteDataContext = createContext()
 
-export const WasteDataProvider = ({children}) => {
+export const WasteDataProvider = ({children}) => {   
     
     
-    
-    
-    const [wasteData, setWasteData] = useState({        
-        "category": "Oleo",
-		"volume": "10",
-		"client_id": "1",
-		"image": "url.img",
-		"status": "pendente",
-		"id": 3,
-        "collector_id" : 4
-    })
+    const [wasteData, setWasteData] = useState()
 
     const addWasteData = (waste)=>{
         setWasteData(waste)
@@ -25,7 +14,7 @@ export const WasteDataProvider = ({children}) => {
  
 
     return(
-        <WasteDataContext.Provider value={{wasteData, addWasteData}}>
+        <WasteDataContext.Provider value={{wasteData, addWasteData, setWasteData}}>
             {children}
         </WasteDataContext.Provider>
 
