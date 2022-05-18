@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import ReactPlayer from 'react-player'
 import { StyledFooter, StyledMain } from './style'
-import { NavSelection } from '../../Components/Global/NavSelection'
+import { NavSelection } from './../../Components/global/NavSelection'
 import { useHeader } from '../../Providers/Header'
-function Videos() {
+const Videos=()=>{
   
-  const [videos,setVideos] = useState([{
+  const [videos] = useState([{
     id:1,
     videoUrl:"https://www.youtube.com/watch?v=hwxIoW3cj4U",
     title:"Plastico",

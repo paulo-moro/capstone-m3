@@ -5,20 +5,31 @@ import { ModalProvider } from "./Modal"
 import { SecondModalProvider } from "./SecondModal"
 import { UserProvider } from "./user"
 import { UserWasteProvider } from "./UserRes"
+import { CompaniesProvider } from "./Companies"
+import { WasteDataProvider } from "./WasteData"
+import { ModalTypeProvider } from "./ModalTypes"
 
 
 const Providers = ({children}) =>{
   return(
     <AuthProvider>
       <UserProvider>
-        <UserWasteProvider>
-          <ModalProvider>
-            <SecondModalProvider>
-              <WasteInfoProvider>
-                <HeaderProvider>{children}</HeaderProvider>
-              </WasteInfoProvider>
-            </SecondModalProvider>
-          </ModalProvider>
+        <UserWasteProvider>         
+          <ModalTypeProvider>
+            <CompaniesProvider>
+              <HeaderProvider>     
+              <SecondModalProvider>            
+                <ModalProvider>
+                  <WasteInfoProvider>
+                    <WasteDataProvider>
+                      {children}
+                    </WasteDataProvider>
+                  </WasteInfoProvider>
+                </ModalProvider>   
+                </SecondModalProvider>               
+              </HeaderProvider>
+            </CompaniesProvider>
+          </ModalTypeProvider>            
         </UserWasteProvider>
       </UserProvider>
     </AuthProvider> 

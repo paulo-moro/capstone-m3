@@ -7,13 +7,13 @@ import { SnackbarProvider } from 'notistack';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Providers>
-    <BrowserRouter>
+  <BrowserRouter>
+    <Providers>
       <SnackbarProvider>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </SnackbarProvider>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </SnackbarProvider>
+    </Providers>
   </BrowserRouter>
- </Providers>
 );

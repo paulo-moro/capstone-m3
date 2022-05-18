@@ -8,20 +8,22 @@ import flower from '../../Assets/Images/flower.svg'
 import ride from '../../Assets/Images/ride.svg'
 import { useHeader } from "../../Providers/Header"
 import { useModal } from "../../Providers/Modal"
+import { useModalType } from "../../Providers/ModalTypes"
 import { StyledMain } from "./style"
 
 const LandingPage = () => {
     const { changeHeader } = useHeader()
     const {closeModal} = useModal()
     const [displayFrame, setDisplayFrame] = useState('ride')
+    const {changeModal, modalType} = useModalType()
     
     useEffect(() => {
         changeHeader('landing')
-        
+        changeModal('register')
         closeModal()
         const loopCond = ['flower', 'car', 'ride']
         let counter = 0
-
+        
         setInterval(() => {
             setDisplayFrame(loopCond[counter])
             counter++
@@ -58,7 +60,7 @@ const LandingPage = () => {
                 }
                 <FormLogin />
             </StyledMain>
-            <RawModal/>
+            <RawModal type={modalType}/>
         </>
     )
 }

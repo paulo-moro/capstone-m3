@@ -1,6 +1,10 @@
 // historico dos residuos do usuario
 import axios from "axios";
+<<<<<<< HEAD
 import { createContext, useContext, useState } from "react";
+=======
+import { createContext, useContext,  useEffect,  useState } from "react";
+>>>>>>> feat/homeCollector
 import { useAuth } from "../IsAuth";
 import { useUser } from "../user";
 export const UserWasteContext = createContext()
@@ -9,21 +13,30 @@ export const UserWasteContext = createContext()
 export const UserWasteProvider = ({children}) => {
   const {auth} = useAuth()
   const [userWaste, setUserWaste] = useState([])
-  const {user} = useUser()
+  
+  const {user,addUser} = useUser()
 
-  const getUserWaste = ({id,type}) => {
-      
+  useEffect(()=>{
+    auth && addUser(JSON.parse(localStorage.getItem("@Ecoleta_User")))
+    auth && getUserWaste(user)
+
+  },[userWaste.length])
+ 
+
+  const  getUserWaste = async ({id,type}) => {
+     
     type === "client" ?
-    axios.get(`https://api-capstone-m3.herokuapp.com/waste`,{headers:{"Authorization":`Bearer ${auth}`}})
+    await axios.get(`https://api-capstone-m3.herokuapp.com/waste`,{headers:{"Authorization":`Bearer ${auth}`}})
     .then(res=>setUserWaste(res.data.filter((waste)=>{  
          
       return waste.client_id === id
     })))
     .catch(err=>err)
     :type === "collector" &&     
-    axios.get(`https://api-capstone-m3.herokuapp.com/waste`,{headers:{"Authorization":`Bearer ${auth}`}})
-    .then(res=>setUserWaste(res.data.filter((waste)=>{
-      return waste.collector_id === id || waste.status === "pendente"
+    await axios.get(`https://api-capstone-m3.herokuapp.com/waste`,{headers:{"Authorization":`Bearer ${auth}`}})
+    .then(res=>setUserWaste(res.data.filter((waste)=>{ 
+      
+      return waste.collector_id === id || waste.status.toLowerCase() === "pendente"
     })))
     .catch(err=>err)
       
@@ -59,7 +72,11 @@ export const UserWasteProvider = ({children}) => {
 
 
   return(
+<<<<<<< HEAD
     <UserWasteContext.Provider value={{userWaste, getUserWaste,rmvClientWaste,changeWasteProps, setUserWaste}}>
+=======
+    <UserWasteContext.Provider value={{userWaste, getUserWaste,rmvClientWaste,changeWasteProps,setUserWaste}}>
+>>>>>>> feat/homeCollector
       {children}
     </UserWasteContext.Provider>
 

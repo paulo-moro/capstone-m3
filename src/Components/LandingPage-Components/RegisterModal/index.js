@@ -1,7 +1,14 @@
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+<<<<<<< HEAD:src/Components/LandingPage-Components/RegisterModal/index.js
 import { useModal } from '../../../Providers/Modal';
+=======
+import { useModal } from './../../Providers/Modal';
+>>>>>>> feat/homeCollector:src/Components/RegisterModal/index.js
 import FormRegister from '../FormRegister';
+import ModalWaste from '../ModalWaste';
+import ModalCompany from '../ModalCompany';
+import { FinishingModal } from '../Home/collector/FinishingModal';
 
 const style = {
   position: 'absolute',
@@ -19,7 +26,7 @@ const style = {
   '.close': {position: 'absolute', right: '6px', top: '6px', border: 'none', fontSize: '15px', backgroundColor: 'transparent', fontWeight: 'bold', '&:hover': {color: 'var(--red)', borderBottom: '2px solid var(--red)'}}
 };
 
- const RawModal = () => {
+ const RawModal = ({type}) => {
     const {modal, closeModal} = useModal()
 
   return (
@@ -32,7 +39,12 @@ const style = {
       >
         <Box sx={style}>
             <button onClick={closeModal} className='close'>Fechar</button>
-          <FormRegister/>
+          {
+            type === "register"? <FormRegister/>
+            :type === "waste"? <ModalWaste/>
+            :type === "companies"?<ModalCompany/>
+            :type === "finish" && <FinishingModal/>
+          }
         </Box>
       </Modal>
     </div>
