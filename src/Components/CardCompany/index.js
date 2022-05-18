@@ -30,7 +30,7 @@ const CardCompany = ({companies}) => {
   
   return (
     <CardContainer>  
-      {
+      {        
         companies?.map((company) => (
         <li key={company.id}>
           <img src={company1} alt={company.name}/>

@@ -13,8 +13,7 @@ export const UserWasteProvider = ({children}) => {
   const {user,addUser} = useUser()
 
   useEffect(()=>{
-    auth &&
-    addUser(JSON.parse(localStorage.getItem("@Ecoleta_user")))
+    auth && addUser(JSON.parse(localStorage.getItem("@Ecoleta_User")))
     auth && getUserWaste(user)
 
   },[userWaste.length])

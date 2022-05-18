@@ -29,8 +29,8 @@ const HomeCollector = () => {
 
 
   useEffect(() => {    
-    user && localStorage.setItem("@Ecoleta_user", JSON.stringify(user))
-    addUser(JSON.parse(localStorage.getItem("@Ecoleta_user")))
+    user && localStorage.setItem("@Ecoleta_User", JSON.stringify(user))
+    addUser(JSON.parse(localStorage.getItem("@Ecoleta_User")))
     auth && Api.get("/waste",{
       headers:
       {"Authorization":`Bearer ${auth}`}}).then(res=> setUserWaste(res.data))       

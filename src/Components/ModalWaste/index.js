@@ -37,14 +37,21 @@ const ModalWaste = () => {
         <button className="btnWasteModalWaste" onClick={() => WasteFind("Papel")}>Papel</button>
         <button className="btnWasteModalWaste" onClick={() => WasteFind("Vidro")}>Vidro</button>
         <button className="btnWasteModalWaste" onClick={() => WasteFind("Metal")}>Metal</button>
-        <button className="btnWasteModalWaste" onClick={() => WasteFind("Madeira")}>Madeira</button>
+        <button className="btnWasteModalWaste" onClick={() => WasteFind("Eletronico")}>Eletrônico</button>
         <button className="btnWasteModalWaste" onClick={() => WasteFind("Oleo")}>Óleo</button>
         <button className="btnWasteModalWaste" onClick={() => setSearchCategory(false)}>Todos</button>
       </div>
        <CardContainerWaste>
-        {searchCategory?
+         
+        {
+        searchCategory?
+        filteredWaste.length > 0?
         filteredWaste?.map((waste)=><CardWaste key={waste.id} waste={waste} />)
-        :userAvailableWaste()?.map((waste)=><CardWaste key={waste.id} waste={waste} />)}
+        :filteredWaste.length === 0 && <li>Não há itens com esse valor de filtro</li>
+        :userAvailableWaste()?.map((waste)=><CardWaste key={waste.id} waste={waste} />)
+        
+        
+        }
        </CardContainerWaste>
         
     </div>      

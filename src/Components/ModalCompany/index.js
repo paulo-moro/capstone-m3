@@ -6,8 +6,6 @@ import { useCompany } from "../../Providers/Companies"
 
 const ModalCompany = () => {  
   const {companies,Companies} = useCompany()
-  
-
   const [search, setSearch] = useState("")
   const [searchName, setSearchName] = useState(false) 
   const [searchCategory, setSearchCategory] = useState(false)
