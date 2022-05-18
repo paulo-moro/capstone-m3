@@ -1,4 +1,5 @@
 import {Route, Switch} from "react-router-dom"
+import AboutUs from "../Pages/AboutUs"
 import Devs from "../Pages/Devs"
 import HomeClient from "../Pages/HomePageClient"
 import HomeCollector from "../Pages/HomePageCollector"
@@ -30,6 +31,9 @@ const Routes = () => {
       </Route>
       <Route exact path="/devs">
         <Devs/>
+      </Route>
+      <Route exact path="/aboutus">
+        <AboutUs/>
       </Route>
     </Switch>
 
