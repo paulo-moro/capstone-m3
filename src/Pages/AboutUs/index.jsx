@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Header from "../../Components/Header";
+import Header from "../../Components/Global/Header";
 import { StyledFooter, StyledMain } from "./style";
 import { NavSelection } from "../../Components/Global/NavSelection";
 import { useHeader } from "../../Providers/Header";

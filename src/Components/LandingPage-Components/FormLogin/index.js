@@ -66,16 +66,9 @@ const FormLogin = () => {
      })
      .then((res) => {
        localStorage.setItem('@Ecoleta_token', res.data.accessToken)
-<<<<<<< HEAD:src/Components/LandingPage-Components/FormLogin/index.js
         handleAuth()
         addUser(res.data.user)
         localStorage.setItem("@Ecoleta_User", JSON.stringify(res.data.user))
-=======
-       handleAuth()
-       addUser(res.data.user)
-       console.log(res.data)
-
->>>>>>> feat/homeCollector:src/Components/FormLogin/index.js
        
        enqueueSnackbar("Login realizado, redirecionando para sua home.", {
 				variant: "success",

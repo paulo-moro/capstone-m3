@@ -1,32 +1,17 @@
-import { Link } from 'react-router-dom'
+import { CgProfile } from "react-icons/cg"
+import { Link, useHistory } from 'react-router-dom'
 import coletor from '../../../Assets/Images/coletor.jpg'
 import leaf from '../../../Assets/Images/leaf.png'
 import { useHeader } from "../../../Providers/Header"
 import { useModal } from '../../../Providers/Modal'
+import { useAuth } from '../../../Providers/IsAuth'
 import Button from '../Button'
 import { StyledHeader } from "./style"
-import {CgProfile} from "react-icons/cg"
-<<<<<<< HEAD:src/Components/Global/Header/index.js
-import { useAuth } from '../../../Providers/IsAuth'
-import { useHistory } from 'react-router-dom'
-
-const Header = () => {
-  const { headerType } = useHeader()
-  const {auth} = useAuth()
-  const {openModal} = useModal()
-  const history = useHistory()
-
-  return (
-    <StyledHeader>
-      <section>
-        <h1 onClick={()=>history.push("/")}>ECO<span>leta</span> <img src={leaf} alt="" /></h1>
-=======
-import { useAuth } from '../../Providers/IsAuth'
-import {useHistory} from "react-router-dom"
 
 const Header = () => {
   const { headerType } = useHeader()
   const {auth,handleAuth} = useAuth()
+  const {openModal} = useModal()
   const history = useHistory()
   const handleLogout = () =>{
     localStorage.clear()
@@ -38,7 +23,6 @@ const Header = () => {
     <StyledHeader>
       <section>
         <Link to="/"><h1>ECO<span>leta</span> <img src={leaf} alt="" /></h1></Link>
->>>>>>> feat/homeCollector:src/Components/Header/index.js
 
         {headerType === 'landing' ?
           <nav>
@@ -74,11 +58,7 @@ const Header = () => {
             <img src={coletor} alt='Foto de Perfil' className="profilePic" />
           </nav>
         :<nav>
-<<<<<<< HEAD:src/Components/Global/Header/index.js
-          
-=======
           <Button whiteButton width='small' padding='9px 15px' fontSize='14px' >Logout</Button>
->>>>>>> feat/homeCollector:src/Components/Header/index.js
           <img src={coletor} alt='Foto de Perfil' className="profilePic" />
         </nav>
         }

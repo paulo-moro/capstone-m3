@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import ReactPlayer from 'react-player'
-import { StyledFooter, StyledMain } from './style'
-import { NavSelection } from './../../Components/global/NavSelection'
 import { useHeader } from '../../Providers/Header'
+import { NavSelection } from './../../Components/Global/NavSelection'
+import { StyledFooter, StyledMain } from './style'
 const Videos=()=>{
   
   const [videos] = useState([{

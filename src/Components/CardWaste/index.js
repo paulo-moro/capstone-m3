@@ -1,5 +1,5 @@
 
-import Button from "../Button"
+import Button from "../Global/Button"
 import waste1 from "./../../Images/waste1.webp"
 
 import { useWasteData } from "../../Providers/WasteData"

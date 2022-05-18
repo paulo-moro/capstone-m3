@@ -1,10 +1,6 @@
 // historico dos residuos do usuario
 import axios from "axios";
-<<<<<<< HEAD
-import { createContext, useContext, useState } from "react";
-=======
-import { createContext, useContext,  useEffect,  useState } from "react";
->>>>>>> feat/homeCollector
+import { createContext, useEffect,  useState, useContext } from "react";
 import { useAuth } from "../IsAuth";
 import { useUser } from "../user";
 export const UserWasteContext = createContext()
@@ -72,11 +68,7 @@ export const UserWasteProvider = ({children}) => {
 
 
   return(
-<<<<<<< HEAD
-    <UserWasteContext.Provider value={{userWaste, getUserWaste,rmvClientWaste,changeWasteProps, setUserWaste}}>
-=======
     <UserWasteContext.Provider value={{userWaste, getUserWaste,rmvClientWaste,changeWasteProps,setUserWaste}}>
->>>>>>> feat/homeCollector
       {children}
     </UserWasteContext.Provider>
 

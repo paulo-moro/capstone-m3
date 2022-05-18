@@ -1,16 +1,16 @@
 
-import { useEffect, useState  } from "react"
-import { useHeader } from "../../Providers/Header"
-import { CollectorHome, StatusBox, WasteHistoryList } from "./style"
-import {FaWallet, FaMapMarkerAlt} from "react-icons/fa"
-import { useUserWaste } from "../../Providers/UserRes"
-import { useUser } from "./../../Providers/user"
-import { useAuth } from "./../../Providers/IsAuth"
-import { useModal } from "../../Providers/Modal"
-import { useWasteData } from "../../Providers/WasteData"
-import { useModalType } from "../../Providers/ModalTypes"
-import RawModal from "../../Components/RegisterModal"
+import { useEffect, useState } from "react"
+import { FaMapMarkerAlt, FaWallet } from "react-icons/fa"
 import Api from "../../Api"
+import RawModal from "../../Components/LandingPage-Components/RegisterModal"
+import { useHeader } from "../../Providers/Header"
+import { useModal } from "../../Providers/Modal"
+import { useModalType } from "../../Providers/ModalTypes"
+import { useUserWaste } from "../../Providers/UserRes"
+import { useWasteData } from "../../Providers/WasteData"
+import { useAuth } from "./../../Providers/IsAuth"
+import { useUser } from "./../../Providers/user"
+import { CollectorHome, StatusBox, WasteHistoryList } from "./style"
 
 
 

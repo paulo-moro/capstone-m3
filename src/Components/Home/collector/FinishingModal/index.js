@@ -1,13 +1,13 @@
 
+import { useEffect, useState } from "react"
+import Api from "../../../../Api"
+import Button from "../../../../Components/Global/Button"
+import { useAuth } from "../../../../Providers/IsAuth"
 import { useModal } from "../../../../Providers/Modal"
+import { useUser } from "../../../../Providers/user"
 import { useUserWaste } from "../../../../Providers/UserRes"
 import { useWasteData } from "../../../../Providers/WasteData"
-import Api from "../../../../Api"
-import { useAuth } from "../../../../Providers/IsAuth"
-import { useUser } from "../../../../Providers/user"
-import { StyledContainer, StyledForm } from "../../../FormLogin/style"
-import Button from "../../../Button"
-import { useEffect, useState } from "react"
+import { StyledContainer, StyledForm } from "../../../LandingPage-Components/FormLogin/style"
 import { StyledImg } from "./style"
 
 

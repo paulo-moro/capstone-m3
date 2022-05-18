@@ -1,14 +1,10 @@
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-<<<<<<< HEAD:src/Components/LandingPage-Components/RegisterModal/index.js
 import { useModal } from '../../../Providers/Modal';
-=======
-import { useModal } from './../../Providers/Modal';
->>>>>>> feat/homeCollector:src/Components/RegisterModal/index.js
 import FormRegister from '../FormRegister';
-import ModalWaste from '../ModalWaste';
-import ModalCompany from '../ModalCompany';
-import { FinishingModal } from '../Home/collector/FinishingModal';
+import ModalWaste from '../../ModalWaste';
+import ModalCompany from '../../ModalCompany';
+import { FinishingModal } from '../../Home/collector/FinishingModal';
 
 const style = {
   position: 'absolute',

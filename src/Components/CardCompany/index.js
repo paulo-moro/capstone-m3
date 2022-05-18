@@ -1,5 +1,5 @@
 import {CardContainer, StyledWaste} from "./style"
-import Button from "./../Button"
+import Button from "../Global/Button"
 import company1 from "./../../Images/company1.webp"
 
 import { useWasteData } from "../../Providers/WasteData"
