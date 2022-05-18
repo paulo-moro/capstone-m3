@@ -65,9 +65,9 @@ const FormLogin = () => {
      })
      .then((res) => {
        localStorage.setItem('@Ecoleta_token', res.data.accessToken)
-       handleAuth()
-       addUser(res.data.user)
-
+        handleAuth()
+        addUser(res.data.user)
+        localStorage.setItem("@Ecoleta_User", JSON.stringify(res.data.user))
        
        enqueueSnackbar("Login realizado, redirecionando para sua home.", {
 				variant: "success",

@@ -1,80 +1,106 @@
-import { useEffect, useState} from "react"
-import { useHeader } from "../../Providers/Header"
-import { useModal } from "../../Providers/Modal"
-import { useUser } from "../../Providers/user"
-import { ClientDiv } from "./style"
+import { useEffect, useState } from "react"
+import { FaMapMarkerAlt } from 'react-icons/fa'
+import { RiCoinsFill } from 'react-icons/ri'
+import Api from "../../Api"
+import ChangeWasteClient from "../../Components/ClientPage-Components/ChangeWasteClient"
 import { ClientListWaste } from "../../Components/ClientPage-Components/ClientWaste"
+import { CustomerHistory } from '../../Components/ClientPage-Components/CustomerHistory'
+import RegisterAndChangeModal from '../../Components/ClientPage-Components/RegisterAndChangeModal'
 import FormRegisterWaste from "../../Components/ClientPage-Components/registerWaste"
 import Button from "../../Components/Global/Button"
-import RegisterAndChangeModal from '../../Components/ClientPage-Components/RegisterAndChangeModal'
-import ChangeWasteClient from "../../Components/ClientPage-Components/ChangeWasteClient"
-import {CustomerHistory} from '../../Components/ClientPage-Components/CustomerHistory'
-import {RiCoinsFill} from 'react-icons/ri'
-import {FaMapMarkerAlt} from 'react-icons/fa'
+import { useHeader } from "../../Providers/Header"
+import { useAuth } from "../../Providers/IsAuth"
+import { useModal } from "../../Providers/Modal"
+import { useSecondModal } from "../../Providers/SecondModal"
+import { useUser } from "../../Providers/user"
 import { useUserWaste } from "../../Providers/UserRes"
+import { ClientDiv, ContainerPageClient } from "./style"
 
 
 
 const HomeClient = () => {
-	const {changeHeader} = useHeader()
-	const {modal, openModal, closeModal, secondModal, openSecondModal, closeSecondModal} = useModal()
-	const {user} = useUser()
-	const {getUserWaste} = useUserWaste()
-	const [isColeta, setIsColeta] = useState(true)
-	const [inputCity, setInputCity] = useState(false)
+  const {changeHeader} = useHeader()
+  const {modal, openModal, closeModal} = useModal()
+  const {secondModal, openSecondModal, closeSecondModal} = useSecondModal()
+  const {user, setUser, addUser} = useUser()
+  const {getUserWaste, userWaste} = useUserWaste()
+  const {auth} = useAuth()
+  const [isColeta, setIsColeta] = useState(true)
+  const [inputCity, setInputCity] = useState(false)
+  const [newCity, setNewCity] = useState("")
 
-	useEffect(() => {
-		changeHeader('homeClient')
-		closeModal()
-		getUserWaste(user)
-	}, [])
-
-
-	const changeCity = () => {
-		setInputCity(true)
-	}
+  useEffect(() => {
+    changeHeader('homeClient')
+    closeModal()
+    getUserWaste(user)
+  }, [])
 
 
-	return(
-		<>
-			<ClientDiv>
-				<div>
-					<span><RiCoinsFill/> {user.wallet}</span>
-					<span onClick={()=> changeCity()}><FaMapMarkerAlt/>{user.city}</span>
-					{inputCity && 
-					<form>
-					<input placeholder="Cidade atual"/>
-					<button>Enviar</button>
-					</form>
-					}
-				</div>
-				<section>
-					<div className="image"></div>
-					<p>Solicite uma nova coleta</p>
-					<Button onClick={()=> openModal()} width={"150px"} padding={"5px"} fontSize={"12px"} whiteButton >Cadastrar Coleta</Button>
-				</section>
-				<div className="buttons">
-					<button onClick={()=> setIsColeta(true)}>Coletas</button>
-					<button onClick={()=> setIsColeta(false)}>Historico</button>
-				</div>
-				<div className="description">
-					<p>Categoria</p>
-					<p>Quantidade</p>
-					<p>Status</p>
-				</div>
-				{isColeta ? 
-					<ClientListWaste/>
-					:
-					<CustomerHistory/>
-				}
-			</ClientDiv>
-			<RegisterAndChangeModal modal={modal} open={openModal} close={closeModal}>
-				<FormRegisterWaste/>
-			</RegisterAndChangeModal>
-			<RegisterAndChangeModal modal={secondModal} open={openSecondModal} close={closeSecondModal}>
-				<ChangeWasteClient/>
-			</RegisterAndChangeModal>
-		</>
+  const changeCity = (city) => {
+    const changeCity = {
+      city: city
+    }
+    Api.patch(`/users/${user.id}`, changeCity, {headers: {"Authorization": `Bearer ${auth}`}})
+    .then((res)=> {
+      setUser(res.data)
+      localStorage.setItem("@Ecoleta_User", JSON.stringify(res.data))
+    })
+    // SnackBar => falha al alterar a cidade
+    .catch((err)=> console.log(err)) 
+  }
+
+  useEffect(()=> {
+    addUser(JSON.parse(localStorage.getItem("@Ecoleta_User")))
+    Api.get(`/users/${user.id}`)
+    .then((res)=> {
+      addUser(res.data)
+      localStorage.setItem("@Ecoleta_User", JSON.stringify(res.data))
+    })
+
+
+  }, [userWaste.length])
+
+
+  return(
+    <>
+      <ClientDiv>
+        <ContainerPageClient>
+          <div className="userInfo">
+            <h3>Olá, {user.name} Bem vindo !</h3>
+            <div className="icons">
+              <span className="city" onClick={()=> setInputCity(!inputCity)}><FaMapMarkerAlt/>{user.city}</span>
+              <span><RiCoinsFill/> EcoPoints: {user.wallet}</span>
+            </div>
+            {inputCity && 
+              <>
+              <input value={newCity} placeholder="Cidade atual" onChange={e => setNewCity(e.target.value)}/>
+              <button onClick={()=> changeCity(newCity)}>Enviar</button>
+              </>
+            }
+          </div>
+          <section>
+            <div className="image"></div>
+            <p>Solicite uma nova coleta</p>
+            <Button onClick={()=> openModal()} width={"150px"} padding={"5px"} fontSize={"12px"} whiteButton >Cadastrar Coleta</Button>
+          </section>
+          <div className="buttons">
+            <button onClick={()=> setIsColeta(true)}>Coletas</button>
+            <button onClick={()=> setIsColeta(false)}>Historico</button>
+          </div>
+          {isColeta ? 
+            <ClientListWaste/>
+            :
+            <CustomerHistory isColeta={isColeta}/>
+          }
+        </ContainerPageClient>
+      </ClientDiv>
+      <RegisterAndChangeModal modal={modal} open={openModal} close={closeModal}>
+        <FormRegisterWaste/>
+      </RegisterAndChangeModal>
+      <RegisterAndChangeModal modal={secondModal} open={openSecondModal} close={closeSecondModal}>
+        <ChangeWasteClient/>
+      </RegisterAndChangeModal>
+    </>
   )
 }
 

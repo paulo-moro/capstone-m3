@@ -1,18 +1,22 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { useUser } from "../../../Providers/user"
 import { useAuth } from "../../../Providers/IsAuth"
+import {useModal} from "../../../Providers/Modal"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import { RegisterWasteStyle } from "./style"
 import Api from "../../../Api"
 import Button from "../../Global/Button"
-import axios from "axios"
+import { useUserWaste } from "../../../Providers/UserRes"
 
 const FormRegisterWaste = () => {
   const [isOleo, setIsOleo] = useState(false)
 	const {user} = useUser()
 	const {auth} = useAuth()
+	const {closeModal} = useModal()
+	const {getUserWaste, userWaste} = useUserWaste()
+	const [openClose, setOpenClose] = useState(false)
 
 	const schema = yup.object().shape({
 		category: yup.string().required("oscolha uma opção"),
@@ -22,8 +26,23 @@ const FormRegisterWaste = () => {
   const {register, handleSubmit, formState:{errors}} = useForm({
 		resolver: yupResolver(schema)
 	})
+ 
+	const successRegister = () => {
+		getUserWaste(user)
+		closeModal()
+		// snackBar
+		// item cadastrado
+	}
 
-	const cadastrar = (data) => {
+	
+
+	const failedRegister = () => {
+		// snackbar
+		// falha ao cadastrar item
+	}
+
+
+	const registerWaste = (data) => {
 		const dataBase= {
 			category: data.category,
 			measure: data.measure,
@@ -32,29 +51,26 @@ const FormRegisterWaste = () => {
 			status: "Pendente"
 		}
 
+
 		Api.post("/waste", dataBase,
 		{headers: {
 			"Authorization": `Bearer ${auth}`
 		}})
-		.then((res)=> console.log(res))
-		.catch((err)=> console.log(err))
+		.then(()=> successRegister())
+		.catch(()=> failedRegister())
 	}
 
-
-	
-	
-	
 	return (
-		<RegisterWasteStyle onSubmit={handleSubmit(cadastrar)}>
-			<input type="file" placeholder="file" {...register("image")}/>
+		<RegisterWasteStyle onSubmit={handleSubmit(registerWaste)}>
+			<input type="text" placeholder="Insira a url da imagem" {...register("image")}/>
 			<select onClick={(e)=> e.target.value === "Óleo" ? setIsOleo(true): setIsOleo(false)} {...register("category")}>
 				<option>Papel</option>
 				<option>Plastico</option>
-				<option>Eltetronico</option>
+				<option>Eletronico</option>
 				<option>Óleo</option>
 			</select>
 			<input type="number" placeholder={isOleo ? "litros" : "peso"} {...register("measure")}/> 
-			<Button width={"100%"} padding={"10px"} fontSize={"15px"} >Cadastrar</Button>
+			<Button width={"60%"} padding={"10px"} fontSize={"15px"}  onClick={()=> setOpenClose(!openClose)}>Cadastrar</Button>
 		</RegisterWasteStyle>
 	)
 }

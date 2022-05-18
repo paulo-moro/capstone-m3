@@ -4,18 +4,19 @@ import { useUserWaste } from "../../../Providers/UserRes"
 import { ClientHistoric } from "./style"
 
 
-export const CustomerHistory = () => {
+export const CustomerHistory = ({isColeta}) => {
 
 	const {user} = useUser()
 	const {getUserWaste, userWaste} =useUserWaste()
 	const [historic, setHistoric] = useState([])
 
-	getUserWaste(user)
 
 	useEffect(()=>{
+		getUserWaste(user)
 		const filter = userWaste.filter((item)=> item.status !== "Pendente")
+		console.log(filter)
 		setHistoric(filter)
-	},[])
+	},[isColeta])
 
 	return(
 		<>
@@ -23,9 +24,14 @@ export const CustomerHistory = () => {
 			{historic.length > 0 ? historic.map((item, index) => {
 				return(
 					<li key={index}>
-						<h3>{item.category}</h3>
-						<p>{item.measure} {item.category === "Óleo" ? "Litros" : "Kg"} </p>
-						<p>{item.status}</p>
+						<div className="div-img">
+							<img src={item.image}/>
+						</div>
+						<div className="info">
+							<h3>{item.category}</h3>
+							<p>{item.measure} {item.category === "Óleo" ? "Litros" : "Kg"} </p>
+							<p>{item.status}</p>
+						</div>
 					</li>
 			)})
 			:

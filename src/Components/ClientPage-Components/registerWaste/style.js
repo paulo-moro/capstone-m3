@@ -1,15 +1,35 @@
 import styled from 'styled-components'
 
 export const RegisterWasteStyle = styled.form`
-  height:150px;
+  height:200px;
   display: flex;
   flex-direction:column;
   margin: 40px 0;
   justify-content:space-between;
+  align-items:center;
 
-  input, select{
+  input{
+    width:80%;
     height: 40px;
-    border: 1px solid #000;
+    border-radius:8px;
+    border:none;
+    background-color: var(--grey1);
+    padding-left:10px;
+    ::placeholder{
+      padding-left:10px;
+    }
   }
+
+  select{
+    width:83%;
+    height: 40px;
+    border-radius:8px;
+    border:none;
+    background-color: var(--grey1);
+    padding-left:10px;
+    cursor: pointer;
+  }
+
+  
 
 `
