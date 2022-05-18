@@ -11,13 +11,10 @@ export const CompaniesProvider = ({children}) => {
   
   const Companies =()=> Api.get("/companies", {headers: {Authorization: `Bearer ${auth}`}})
   .then((res) => {setCompanies(res.data)})
-
-  useEffect(()=>{
-    Companies()
-  },[])
+  
   
   return(
-    <CompaniesContext.Provider value={{companies}}>
+    <CompaniesContext.Provider value={{companies,Companies}}>
       {children}
     </CompaniesContext.Provider>
   )

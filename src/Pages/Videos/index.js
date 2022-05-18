@@ -4,7 +4,7 @@ import Header from '../../Components/Header'
 import { StyledFooter, StyledMain } from './style'
 import { NavSelection } from './../../Components/global/NavSelection'
 import { useHeader } from '../../Providers/Header'
-function Videos() {
+const Videos=()=>{
   
   const [videos] = useState([{
     id:1,

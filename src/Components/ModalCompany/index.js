@@ -1,20 +1,21 @@
 import CardCompany from "../CardCompany"
 import {CompanyModal} from "./style"
 import {FaSearch} from "react-icons/fa"
-import {useState} from "react"
+import {useEffect, useState} from "react"
 import { useCompany } from "../../Providers/Companies"
-import { useModal } from "../../Providers/Modal"
 
 const ModalCompany = () => {  
-  const {companies} = useCompany()
+  const {companies,Companies} = useCompany()
   
-  const {closeModal} = useModal()
 
   const [search, setSearch] = useState("")
   const [searchName, setSearchName] = useState(false) 
   const [searchCategory, setSearchCategory] = useState(false)
   const [filteredCompanies, setFilteredCompanies] = useState([])  
   
+  useEffect(()=>{
+    Companies()
+  },[])
 
   const searchCompanies = ((input) => {    
     const regex = new RegExp(input.toLowerCase(), 'g')      
