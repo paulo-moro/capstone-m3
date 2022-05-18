@@ -1,6 +1,6 @@
 // historico dos residuos do usuario
 import axios from "axios";
-import { createContext, useContext,  useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { useAuth } from "../IsAuth";
 import { useUser } from "../user";
 export const UserWasteContext = createContext()
@@ -28,6 +28,7 @@ export const UserWasteProvider = ({children}) => {
     .catch(err=>err)
       
   }//função que busca na api os residuos do cliente ou coletor, no caso do coletor pega também coletas pendentes
+  
 
   const rmvClientWaste =({type}, wasteId )=>{
     const newList = userWaste.filter((waste)=>{
@@ -40,7 +41,9 @@ export const UserWasteProvider = ({children}) => {
         headers:
         {"Authorization":`Bearer ${auth}`}
       })
+      .then((res) => console.log(res))
     }
+    
     
   }//função para deletar waste da lista do cliente, função somente para cliente
 
@@ -50,13 +53,13 @@ export const UserWasteProvider = ({children}) => {
       headers:
       {"Authorization":`Bearer ${auth}`}
     })
-    getUserWaste(user) 
+    .then((res) => getUserWaste(user))
     
   } //Função para modificar propriedades, tanto para cliente quanto coletor, vc deve passar o id do residuo e depois o objeto com as alterações
 
 
   return(
-    <UserWasteContext.Provider value={{userWaste, getUserWaste,rmvClientWaste,changeWasteProps}}>
+    <UserWasteContext.Provider value={{userWaste, getUserWaste,rmvClientWaste,changeWasteProps, setUserWaste}}>
       {children}
     </UserWasteContext.Provider>
 

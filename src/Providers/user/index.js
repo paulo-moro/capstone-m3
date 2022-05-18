@@ -4,7 +4,8 @@ export const UserContext = createContext()
 
 export const UserProvider = ({children}) => {
     
-    const [user, setUser] = useState("")
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("@Ecoleta_User"))  || "")
+
 
     const addUser = (person) => {
         setUser(person)
@@ -15,7 +16,7 @@ export const UserProvider = ({children}) => {
     }
 
     return(
-        <UserContext.Provider value={{user, addUser, rmvUser}}>
+        <UserContext.Provider value={{user, setUser, addUser, rmvUser}}>
             {children}
         </UserContext.Provider>
 

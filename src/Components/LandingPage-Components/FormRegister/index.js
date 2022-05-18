@@ -79,7 +79,9 @@ const FormRegister = () => {
       })
       .then(({data}) => {
       localStorage.setItem('@Ecoleta_token', data.accessToken)
+      localStorage.setItem("@Ecoleta_User", JSON.stringify(data.user))
       addUser(data.user)
+      console.log(data)
       handleAuth()
 
       enqueueSnackbar("Cadastro realizado, redirecionando para sua home.", {
