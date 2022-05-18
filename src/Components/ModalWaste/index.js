@@ -2,13 +2,11 @@ import CardWaste from "../CardWaste"
 import {CardContainerWaste, WasteModal} from "./style"
 import {useState} from "react"
 import { useUserWaste } from "../../Providers/UserRes"
-import { useModal } from "../../Providers/Modal"
 
 
 
 const ModalWaste = () => {
   const { userWaste } = useUserWaste()
-  const {closeModal} = useModal()
 
   const [filteredWaste, setFilteredWaste] = useState([])
   const [searchCategory, setSearchCategory] = useState(false)

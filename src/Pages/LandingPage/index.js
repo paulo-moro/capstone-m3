@@ -15,7 +15,7 @@ const LandingPage = () => {
     const { changeHeader } = useHeader()
     const {closeModal} = useModal()
     const [displayFrame, setDisplayFrame] = useState('ride')
-    const {changeModal} = useModalType()
+    const {changeModal, modalType} = useModalType()
     
     useEffect(() => {
         changeHeader('landing')
@@ -60,7 +60,7 @@ const LandingPage = () => {
                 }
                 <FormLogin />
             </StyledMain>
-            <RawModal/>
+            <RawModal type={modalType}/>
         </>
     )
 }
