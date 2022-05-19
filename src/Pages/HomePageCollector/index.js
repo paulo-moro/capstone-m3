@@ -120,7 +120,7 @@ const HomeCollector = () => {
         }        
       </section>      
     </CollectorHome>
-    <StyledFooter><button>Pegar nova entrega</button></StyledFooter> 
+    <StyledFooter><button onClick={handleWasteModal}>Pegar nova entrega</button></StyledFooter> 
     </>     
   )
 }
