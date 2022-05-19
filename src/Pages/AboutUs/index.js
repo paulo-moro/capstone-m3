@@ -5,16 +5,9 @@ import recicle from "../../Assets/img/recicle.png";
 import { NavSelection } from "../../Components/Global/NavSelection";
 import { useHeader } from "../../Providers/Header";
 import { StyledFooter, StyledMain } from "./style";
-
+import logo_3 from "../../Assets/Images/logo_3.png"
 const AboutUs = () => {
   const [aboutUs, setAboutUs] = useState([
-    {
-      id: 1,
-      img: caminhao,
-      title: "Gestão de Resíduos",
-      description:
-        "A gestão de resíduos é um problema atual, que ocorre em pequenas e grandes cidades. Existe uma grande complexidade em atrair pessoas/empresas para o movimento do tratamento desses resíduos. Além de uma demanda grande de trabalhadores que fazem a logística necessária para o resíduo chegar à estação de tratamento",
-    },
     {
       id: 2,
       img: recicle,
@@ -22,6 +15,13 @@ const AboutUs = () => {
       description:
         "O Ecoleta traz uma forma de haver ganhos tanto para o cliente, quanto para o trabalhador logístico",
     },
+    {
+      id: 1,
+      img: logo_3,
+      title: "Gestão de Resíduos",
+      description:
+        "A gestão de resíduos é um problema atual, que ocorre em pequenas e grandes cidades. Existe uma grande complexidade em atrair pessoas/empresas para o movimento do tratamento desses resíduos. Além de uma demanda grande de trabalhadores que fazem a logística necessária para o resíduo chegar à estação de tratamento",
+    },    
     {
       id: 3,
       img: ecocoins,
