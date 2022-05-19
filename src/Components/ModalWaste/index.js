@@ -34,10 +34,7 @@ const ModalWaste = () => {
   return (
     <WasteModal>
     <div className="containerModalWaste">
-      <div className="containerHeaderWaste">
-        <h1 className="titleModalWaste">Coletas disponiveis:</h1>
-        
-      </div>       
+            
       <div className="containerBtnModalWaste">
         <button className="btnWasteModalWaste" onClick={() => findByCategory("Plastico")}>Plástico</button>
         <button className="btnWasteModalWaste" onClick={() => findByCategory("Papel")}>Papel</button>
@@ -47,6 +44,7 @@ const ModalWaste = () => {
         <button className="btnWasteModalWaste" onClick={() => findByCategory("Óleo")}>Óleo</button>
         <button className="btnWasteModalWaste" onClick={() => userAvailableWaste()}>Todos</button>
       </div>
+      <h1 className="titleModalWaste">Coletas disponiveis</h1>
        <CardContainerWaste>
          
         { filteredWaste.length > 0? filteredWaste?.map((waste)=><CardWaste key={waste.id} waste={waste} />)  

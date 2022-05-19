@@ -68,7 +68,7 @@ const ModalCompany = () => {
           <button className="btnWasteModalCompany" onClick={() => CompanyFind("Óleo")}>Óleo</button>
           <button className="btnWasteModalCompany" onClick={showAll}>Todos</button>
         </div>
-        <h1 className="titleModalCompany">Empresas próximas à mim:</h1>
+        <h1 className="titleModalCompany">Empresas próximas à mim</h1>
         {
           searchName ?
           (<CardCompany companies={filteredCompanies} />) 

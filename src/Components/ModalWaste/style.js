@@ -3,25 +3,28 @@ import styled from "styled-components"
 export const WasteModal = styled.section`
 display:flex;
 flex-direction: column;
+align-items: center;
 padding-top: 15px;
 
   @media (min-width: 768px) {
     padding-top: 175px;
   }
-
+  .titleModalWaste{
+    text-align: center;
+  }
   .containerModalWaste {
     width: 75%;
     font-size: 13px;
     text-align: center;  
-    margin: 0 auto;
     border-radius: 5px;
-    position: relative;
     background-color: var(--white);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0.5rem;
-    padding: 10px;
+    padding: 10px;    
+    justify-content: center;
+  
 
     @media (min-width: 768px) {
       margin-top: -155px;
@@ -83,18 +86,15 @@ padding-top: 15px;
   }
 
   .btnWasteModalWaste {    
-    width: 90px;
+    width: 80px;
     height: 25px;
-    text-align: left;    
-    padding-left: 10px;    
-    flex-direction: row;
-    justify-content: flex-start;
-    border-radius: 15px;    
+    text-align: center;    
+    border-radius: 15px;   
+    font-size :12px ;
 
     @media (min-width: 600px) {
-      width: 83px;
-      flex-direction: row;
-      flex-wrap: nowrap;
+      width: 90px;
+      font-size: 15px;
     }
   }
 `
@@ -106,18 +106,18 @@ export const CardContainerWaste = styled.ul`
   padding: 15px;
   width: 100%;
   height: 80%;
-  background-color: var(--green5);
+  background-color: var(--white);
   border-radius: 10px;
   overflow-x: scroll;
   ::-webkit-scrollbar {
-    background-color: var(--green4);
+    background-color: var(--grey1);
     height: 10px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: var(--green1);    
+    background-color: var(--grey2);    
     border-radius: 5px;
   }
 
@@ -129,7 +129,7 @@ export const CardContainerWaste = styled.ul`
   justify-content: center;
   gap: 1rem;
   width: 240px;
-  height: 390px;
+  height: 280px;
   padding: 15px;
   background-color: var(--grey2);
   list-style: none;
