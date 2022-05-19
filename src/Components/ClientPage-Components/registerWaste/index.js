@@ -32,7 +32,7 @@ const FormRegisterWaste = () => {
 	const successRegister = () => {
 		getUserWaste(user)
 		closeModal()
-		enqueueSnackbar("Item removido", {
+		enqueueSnackbar("Resíduo cadastrado", {
 			variant: "success",
 			autoHideDuration: 2000,
 			anchorOrigin: {

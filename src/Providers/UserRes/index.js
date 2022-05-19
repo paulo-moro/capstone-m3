@@ -24,7 +24,6 @@ export const UserWasteProvider = ({children})=> {
  
 
   const  getUserWaste = async ({id,type}) => {
-     
     type === "client" ?
     await axios.get(`https://api-capstone-m3.herokuapp.com/waste`,{headers:{"Authorization":`Bearer ${auth}`}})
     .then(res=>{setUserWaste(res.data.filter((waste)=>{  
@@ -55,7 +54,7 @@ export const UserWasteProvider = ({children})=> {
         {"Authorization":`Bearer ${auth}`}
       })
       .then((res)=> {
-        enqueueSnackbar("Item removido", {
+        enqueueSnackbar("Resíduo removido", {
           variant: "success",
           autoHideDuration: 2000,
           anchorOrigin: {
@@ -79,7 +78,7 @@ export const UserWasteProvider = ({children})=> {
     })
     .then((res) => {
       getUserWaste(user)
-      enqueueSnackbar("Item alterado", {
+      enqueueSnackbar("Resíduo alterado", {
         variant: "success",
         autoHideDuration: 2000,
         anchorOrigin: {
