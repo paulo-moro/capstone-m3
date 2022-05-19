@@ -7,6 +7,7 @@ border-bottom: 2px solid var(--grey2);
 box-shadow: 0px 6px 14px -4px rgba(0,0,0,0.12);
 display: flex;
 padding: 0 20px 0 20px;
+
     a {
         text-decoration: none;
         color: inherit
@@ -30,7 +31,7 @@ padding: 0 20px 0 20px;
   }
   section {
       width: 100%;
-      max-width: 1000px;
+      max-width: 1050px;
       margin: 0 auto;
       display: flex;
       flex-flow: row wrap;

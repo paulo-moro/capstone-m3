@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 
 export const NavOptions = ({children, location}) =>{
@@ -13,12 +14,12 @@ export const NavOptions = ({children, location}) =>{
     location === "video"?
     <li onClick={handleNavOpt} className="navChoice--container">
       {navOpt && <ul className="navOpt">
-        <li>
+        <Link to="/devs">
           Quem somos
-        </li>
-        <li>
+        </Link>
+        <Link to="/aboutus">
           Sobre Ecoleta
-        </li>
+        </Link>
         <li>
         </li>        
       </ul>}
@@ -27,27 +28,27 @@ export const NavOptions = ({children, location}) =>{
     :location === "login"?
       <li>
         {navOpt && <ul>
-          <li>
-            Quem somos
-          </li>
-          <li>
-            Sobre Ecoleta
-          </li>
-          <li>
-            Curiosidades
-          </li>
+          <Link to="/devs">
+          Quem somos
+        </Link>
+        <Link to="/aboutus">
+          Sobre Ecoleta
+        </Link>
+          <Link to="/videos">
+            Video
+          </Link>
         </ul>}
         {children}
       </li>
     :location === "home" &&
       <li>
         {navOpt && <ul>
-          <li>
-            Quem somos
-          </li>
-          <li>
-            Sobre Ecoleta
-          </li>
+          <Link to="/devs">
+          Quem somos
+        </Link>
+        <Link to="/aboutus">
+          Sobre Ecoleta
+        </Link>
         </ul>}
         {children}
       </li>

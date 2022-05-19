@@ -1,4 +1,4 @@
-import { CgProfile } from "react-icons/cg"
+
 import { Link, useHistory } from 'react-router-dom'
 import coletor from '../../../Assets/Images/coletor.jpg'
 import leaf from '../../../Assets/Images/leaf.png'
@@ -42,7 +42,7 @@ const Header = () => {
           <nav className='header--nav'>
             <ul>
               <li>
-                  <Link className='header_link' to="/"><CgProfile/> {auth?"Home":"Login"}</Link> 
+                  <Link className='header_link' to="/"> {auth?"Home":"Login"}</Link> 
               </li>
               <Link to='/devs'  className='navItem'>
                   Quem somos

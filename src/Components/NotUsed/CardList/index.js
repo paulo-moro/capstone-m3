@@ -6,7 +6,7 @@ import { Card } from "../Card"
 
 
 export const CardList = ({list, type}) =>{
-  console.log(list)
+
   return(
     <ul>
       {list.length > 0 ?list?.map((listItem)=>{
