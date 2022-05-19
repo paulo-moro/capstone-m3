@@ -1,9 +1,8 @@
 
-import Button from "../Global/Button"
-import waste1 from "./../../Images/waste1.webp"
+import Button from "../../../Global/Button" 
 
-import { useWasteData } from "../../Providers/WasteData"
-import { useModalType } from "../../Providers/ModalTypes"
+import { useWasteData } from "./../../../../Providers/WasteData"
+import { useModalType } from "./../../../../Providers/ModalTypes"
 
 
 
@@ -19,7 +18,7 @@ const CardWaste = ({waste}) => {
   
   return (    
     <li>
-      <img src={waste1} alt={waste.category}/>
+      <img src={waste.image} alt={waste.category}/>
       <h2>{waste.category}</h2>
       <h3>{waste.measure} {waste.category === "Óleo"?"Litros":"Kg"}</h3>
       <Button onClick={handleOpenCompanyModal} >{waste.status}</Button>

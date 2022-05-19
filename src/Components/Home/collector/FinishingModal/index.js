@@ -9,15 +9,16 @@ import { useUserWaste } from "../../../../Providers/UserRes"
 import { useWasteData } from "../../../../Providers/WasteData"
 import { StyledContainer, StyledForm } from "../../../LandingPage-Components/FormLogin/style"
 import { StyledImg } from "./style"
-
+import { useSnackbar } from "notistack"
 
 export const FinishingModal = () =>{
   const {changeWasteProps} = useUserWaste()  
   const {closeModal} = useModal()
   const {wasteData} = useWasteData()
   const {auth} = useAuth()
-  const {addUser, setUser, user} = useUser()
+  const {addUser,  user} = useUser()
   const {getUserWaste} = useUserWaste()  
+  const {enqueueSnackbar}= useSnackbar()
 
   const [client, setClient] = useState()
 
@@ -27,15 +28,13 @@ export const FinishingModal = () =>{
       if(type==="collector"){
         addUser(res.data) 
         localStorage.setItem("@Ecoleta_User", JSON.stringify(res.data))
-      } else if(type === "client"){
-        console.log(res.data)
       }      
     
     })
   }   
   useEffect(()=>{
     Api.get(`/users/${wasteData.client_id}`).then((res)=>{
-      console.log(res.data.wallet)
+  
       setClient(res.data)      
     })
 
@@ -48,7 +47,7 @@ export const FinishingModal = () =>{
       status:"Entregue"
     }
 
-    wasteData.status !== "Entregue" &&
+    
     changeWasteProps(wasteData.id, requestData)   
     
    
@@ -58,14 +57,17 @@ export const FinishingModal = () =>{
     }
     const clientWalletRequest = {
       wallet:client.wallet+1
-    }
-
-      console.log(client.wallet+1)
-
-    console.log(clientWalletRequest)
+    }    
+    enqueueSnackbar("Entrega realizada com sucesso para a empresa.", {
+      variant: "success",
+      autoHideDuration: 2000,
+      anchorOrigin: {
+        vertical: 'bottom',
+        horizontal: 'right',
+  }})
   
-    wasteData.status !== "Entregue" && userChangeRequest(user.id, collectorWalletRequest) 
-    wasteData.status !== "Entregue" && userChangeRequest(wasteData.client_id, clientWalletRequest)
+    userChangeRequest(user.id, collectorWalletRequest, "collector") 
+    userChangeRequest(wasteData.client_id, clientWalletRequest, "client")
     closeModal()
 
   }

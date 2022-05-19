@@ -1,10 +1,15 @@
 import styled from "styled-components"
 
 export const CompanyModal = styled.section`
+  height: 100%;
+  width: 100%;
 
 
-
-  
+  .containerModalCompany{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   .containerHeaderModalCompany {
     display: flex;
@@ -45,15 +50,14 @@ export const CompanyModal = styled.section`
     justify-content: flex-end;
     flex-direction: row;
     flex-wrap: nowrap;
+    width:280px ;
   }
 
   .searchCompany {
     display: flex;
     width: 100%;
 
-    @media (min-width: 768px) {
-      width: 100%;
-    }
+    
   }
 
   .inputModalCompany {
@@ -77,6 +81,7 @@ export const CompanyModal = styled.section`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    
   }
 
   .btnSearch,
@@ -94,10 +99,12 @@ export const CompanyModal = styled.section`
 
   .containerBtnModalCompany {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    width: 100%;
+    gap:5px ;
+    width: 80%;
+    margin-top:5%;
+    margin-bottom: 4%;
 
     @media (min-width: 1024px) {
       justify-content: flex-start;
@@ -106,11 +113,14 @@ export const CompanyModal = styled.section`
   }
 
   .btnWasteModalCompany {    
-    width: 90px;
+    width: 70px;
     height: 25px;
-    padding-left: 10px;    
+    font-size   :12px ;
     flex-direction: row;
-    justify-content: flex-start;
+    font-family: 'Inter';
+    display: flex;
+    justify-content: center;
+    
     
     @media (min-width: 600px) {
       width: 83px;
