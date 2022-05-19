@@ -30,20 +30,20 @@ const AboutUs = () => {
       title: "Ecopoints",
       description:
         "O cliente receberá ecoPoints a cada pedido de coleta feito no App, onde futuramente poderão ser trocados por dinheiro ou cupons de desconto",
-    },
-    {
-      id: 4,
-      img: chat,
-      title: "Diferencial",
-      description:
-        "O Ecoleta possui de centralizar a comunicação entre cliente e trabalhador dentro do App",
-    },
+    }
+    //,
+    //{
+      //id: 4,
+      //img: chat,
+      //title: "Diferencial",
+      //description:
+      //  "O Ecoleta possui de centralizar a comunicação entre cliente e trabalhador dentro do App",
+    //},
   ]);
   const { changeHeader } = useHeader();
   changeHeader("video");
   return (
     <>
-      <Header />
       <StyledMain>
         <h1>Sobre Nós</h1>
         <ul className="aboutUs--container">

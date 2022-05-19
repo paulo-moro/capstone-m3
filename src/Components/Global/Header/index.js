@@ -33,9 +33,9 @@ const Header = () => {
               <Link to='/devs'  className='navItem'>
                   Quem somos
               </Link>
-              <li className='navItem' onClick={openModal}>
-                  Faça Parte
-              </li>
+              <Link to="/aboutus">
+                Sobre o Ecoleta
+              </Link>
             </ul>
           </nav>
         :headerType === "video"?
@@ -47,9 +47,9 @@ const Header = () => {
               <Link to='/devs'  className='navItem'>
                   Quem somos
               </Link>
-              <li>
+              <Link to="/aboutus">
                 Sobre o Ecoleta
-              </li>
+              </Link>
             </ul>
           </nav>                
         :headerType === 'homeCollector' ?
