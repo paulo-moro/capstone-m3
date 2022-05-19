@@ -12,6 +12,7 @@ h2 {
     font-size: 25px;
     font-weight: bold;
     margin: 0 0 30px 20px;
+    text-align: center;
 }
 
 ul {

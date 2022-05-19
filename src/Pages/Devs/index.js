@@ -10,7 +10,7 @@ import { StyledMain } from './style'
 const Devs = () => {
     return (
         <StyledMain>
-            <h2 className='team'>Nosso time:</h2>
+            <h2 className='team'>Nosso time</h2>
             <ul>
             <DevCard fig={gian} name={'Giancarlo Rossi'} links={['https://www.linkedin.com/in/giankaz/', 'https://github.com/giankaz']} role='Product Owner' />
             <DevCard fig={paulo} name={'Paulo Moro'} links={['https://www.linkedin.com/in/paulo-henrique-moro-dos-santos/', 'https://github.com/paulo-moro']} role='Scrum Master' />

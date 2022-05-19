@@ -50,7 +50,7 @@ const FormLogin = () => {
     
 
     const submit = ({email, pass}) => {
-      console.log(email, pass)
+    
       enqueueSnackbar("Realizando login, aguarde.", {
 				variant: "info",
 				autoHideDuration: 2000,
