@@ -59,7 +59,13 @@ export const CollectorHome = styled.main`
     border-bottom: 2px var(--green2) solid;
 
   }
-    
+  .btnHomeCollector{
+    display: none;
+    @media(min-width:500px){
+      display: flex;
+      justify-content: center;
+    }
+  }
 
   .welcomeUser {
     font-size: 140%;
