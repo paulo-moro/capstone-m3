@@ -5,6 +5,7 @@ display:flex;
 flex-direction: column;
 align-items: center;
 padding-top: 15px;
+width: 100%;
 
   @media (min-width: 768px) {
     padding-top: 175px;
