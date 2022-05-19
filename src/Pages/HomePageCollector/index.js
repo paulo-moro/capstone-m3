@@ -28,6 +28,7 @@ const HomeCollector = () => {
   const {setCompanies} = useCompany() 
 
   const [filtered,setFiltered] = useState()
+  const [history, setHistory] = useState(false)
 
 
   useEffect(() => {    
@@ -83,19 +84,35 @@ const HomeCollector = () => {
             </div>  
           <div className="containerBtnHomeCollector">            
             <button className="btnHomeCollector" onClick={handleWasteModal}>Coletas</button>         
-          </div>      
-              <h3 className="userInformationH3">Minhas coletas</h3>
+          </div>
+              <div className="historic__type historic__type--container">
+                <input type="radio" id="currentCollect" name="chosingList" className="current__collections current__collection--input" onChange={()=>setHistory(false)}/>
+                <label htmlFor="currentCollect" className="current__collection--label">Em andamento</label> 
+                <input type="radio" id="historicCollect" name="chosingList" className="historic__collections current__collection--input" onClick={()=>setHistory(true)}/>
+                <label htmlFor="historicCollect" className="current__collection--label">Historico</label>
+              </div>      
             <WasteHistoryList>
-              {filtered?.map((waste)=>(
+              {!history && filtered?.map((waste)=>(
+                waste.status !== "Entregue" &&
                 <li key={waste.id} onClick={()=>handleFinishModal(waste)}>
                   <h2>{waste.category}</h2>
                   {waste.status === "Pendente"?<StatusBox background={"var(--yellow)"}>{waste.status}</StatusBox>
                   :waste.status === "Reservado"?<StatusBox background={"var(--orange)"}>{waste.status}</StatusBox>
-                  :waste.status === "Entregue"?<StatusBox background={"var(--green1)"}>{waste.status}</StatusBox>
                   :<StatusBox background={"var(--red)"}>{waste.status}</StatusBox>
                   }                   
                 </li>              
               ))}  
+              {
+                history && filtered?.map((waste)=>(
+                  waste.status === "Entregue" &&
+                  <li key={waste.id} onClick={()=>handleFinishModal(waste)}>
+                    <h2>{waste.category}</h2>
+                    {
+                      <StatusBox background={"var(--green1)"}>{waste.status}</StatusBox>
+                    }
+
+                  </li>
+                ))}
                 
             </WasteHistoryList>     
           </div>                

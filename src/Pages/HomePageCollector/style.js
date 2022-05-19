@@ -56,6 +56,23 @@ export const CollectorHome = styled.main`
     font-weight: 700;
 
   }
+  .historic__type--container{
+    display: flex;
+    width:90%;
+    justify-content: space-around;
+    margin: 5% 0 
+  }
+  .current__collection--input{
+    display: none;
+  }
+  .current__collection--label:hover{
+    cursor: pointer;
+  }
+  .current__collection--input:checked+label{
+    color: var(--green2);
+    border-bottom: 2px var(--green2) solid;
+
+  }
     
 
   .welcomeUser {
@@ -84,7 +101,6 @@ export const CollectorHome = styled.main`
     display: flex;
     flex-direction: column;    
     justify-content: space-around;
-    height: 70px;
     width: 100%;
 
     @media (min-width:600px) {

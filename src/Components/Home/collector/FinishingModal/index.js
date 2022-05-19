@@ -46,7 +46,7 @@ export const FinishingModal = () =>{
       status:"Entregue"
     }
 
-    wasteData.status !== "Entregue" &&
+    
     changeWasteProps(wasteData.id, requestData)   
     
    
@@ -59,8 +59,8 @@ export const FinishingModal = () =>{
     }    
 
   
-    wasteData.status !== "Entregue" && userChangeRequest(user.id, collectorWalletRequest, "collector") 
-    wasteData.status !== "Entregue" && userChangeRequest(wasteData.client_id, clientWalletRequest, "client")
+    userChangeRequest(user.id, collectorWalletRequest, "collector") 
+    userChangeRequest(wasteData.client_id, clientWalletRequest, "client")
     closeModal()
 
   }

@@ -14,6 +14,8 @@ const CardCompany = ({companies}) => {
   const {changeWasteProps} = useUserWaste()
   const {user} = useUser()
 
+ 
+
   const handleChose = (company) => {
     
     const requestData = {
@@ -21,8 +23,12 @@ const CardCompany = ({companies}) => {
       destiny:company,
       status:"Reservado" 
     }
-    
-    company.materials.includes(wasteData.category)?changeWasteProps(wasteData.id, requestData) && closeModal()    
+    const finishReserve = () =>{
+      changeWasteProps(wasteData.id, requestData) 
+      closeModal()  
+    }
+    company.materials.includes(wasteData.category)?
+      finishReserve()
     :( console.log("escolha uma empresa que atenda o material a ser reciclado"))//modal
     
    
