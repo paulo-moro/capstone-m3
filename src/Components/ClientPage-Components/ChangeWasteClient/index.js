@@ -66,6 +66,8 @@ const ChangeWasteClient = () => {
         <option>Plastico</option>
         <option>Eletronico</option>
         <option>Óleo</option>
+        <option>Metal</option>
+        <option>Vidro</option>
       </select>
       <input defaultValue={infoWaste.measure} type="number" {...register("measure")}/>
       <button type="submit">Alterar informações</button>
