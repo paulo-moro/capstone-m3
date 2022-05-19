@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 export const CompanyModal = styled.section`
   height: 100%;
+  width: 100%;
 
 
   .containerModalCompany{

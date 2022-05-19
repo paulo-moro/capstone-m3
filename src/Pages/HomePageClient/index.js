@@ -46,7 +46,7 @@ const HomeClient = () => {
       localStorage.setItem("@Ecoleta_User", JSON.stringify(res.data))
     })
     // SnackBar => falha al alterar a cidade
-    .catch((err)=> console.log(err)) 
+    .catch((err)=> err) 
   }
 
   useEffect(()=> {
@@ -70,18 +70,16 @@ const HomeClient = () => {
             <div className="icons">
               <span className="city" onClick={()=> setInputCity(!inputCity)}><FaMapMarkerAlt/>{user.city}</span>
               <span><RiCoinsFill/> EcoPoints: {user.wallet}</span>
-            </div>
+            </div >
             {inputCity && 
-              <>
-              <input value={newCity} placeholder="Cidade atual" onChange={e => setNewCity(e.target.value)}/>
-              <button onClick={()=> changeCity(newCity)}>Enviar</button>
-              </>
+              <div className='city_container'>
+              <input className='city_input' value={newCity} placeholder="Cidade atual" onChange={e => setNewCity(e.target.value)}/>
+              <Button width='small' padding='10px' onClick={()=> changeCity(newCity)}>Enviar</Button>
+              </div>
             }
           </div>
           <section>
-            <div className="image"></div>
-            <p>Solicite uma nova coleta</p>
-            <Button onClick={()=> openModal()} width={"150px"} padding={"5px"} fontSize={"12px"} whiteButton >Cadastrar Coleta</Button>
+            <Button onClick={()=> openModal()} width={"250px"} padding={"15px"} fontSize={"12px"} whiteButton >Cadastrar Coleta</Button>
           </section>
           <div className="buttons">
             <button onClick={()=> setIsColeta(true)}>Coletas</button>

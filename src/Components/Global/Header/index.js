@@ -33,9 +33,9 @@ const Header = () => {
               <Link to='/devs'  className='navItem'>
                   Quem somos
               </Link>
-              <li className='navItem' onClick={openModal}>
-                  Faça Parte
-              </li>
+              <Link to="/aboutus">
+                Sobre o Ecoleta
+              </Link>
             </ul>
           </nav>
         :headerType === "video"?
@@ -47,9 +47,9 @@ const Header = () => {
               <Link to='/devs'  className='navItem'>
                   Quem somos
               </Link>
-              <li>
+              <Link to="/aboutus">
                 Sobre o Ecoleta
-              </li>
+              </Link>
             </ul>
           </nav>                
         :headerType === 'homeCollector' ?
@@ -58,7 +58,7 @@ const Header = () => {
             <img src={coletor} alt='Foto de Perfil' className="profilePic" />
           </nav>
         :<nav>
-          <Button whiteButton width='small' padding='9px 15px' fontSize='14px' >Logout</Button>
+          <Button whiteButton width='small' padding='9px 15px' fontSize='14px' onClick={()=>handleLogout()} >Logout</Button>
           <img src={coletor} alt='Foto de Perfil' className="profilePic" />
         </nav>
         }
