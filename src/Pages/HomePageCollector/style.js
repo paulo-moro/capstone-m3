@@ -6,24 +6,23 @@ export const CollectorHome = styled.main`
   width: 100vw;
   max-width: 1220px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .containerHomeCollector {
     width: 71%;
     max-width: 250px;
-    margin: 0 auto;
+    height: 510px ;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
     align-items: center;
-    padding: 20px 0;
+    justify-content: center;
   }  
 
   .containerBtnHomeCollector {
     display: flex;
-    gap: 1rem;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-direction: row;
+    justify-content: center;
   }
 
   .btnHomeCollector {
@@ -45,8 +44,18 @@ export const CollectorHome = styled.main`
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    min-height: 460px;
+    height: 70%;
+    justify-content:space-around ;
   }  
+  .userContainerInformation h3{
+    text-align: center;
+    margin:5px 0px 5px 0px;
+    font-family: 'Inter';
+    font-weight: 700;
 
+  }
     
 
   .welcomeUser {
@@ -74,8 +83,8 @@ export const CollectorHome = styled.main`
   .containerUserInformationH2 {
     display: flex;
     flex-direction: column;    
-    gap: 1rem;
-    padding: 10px 0;
+    justify-content: space-around;
+    height: 70px;
     width: 100%;
 
     @media (min-width:600px) {
@@ -140,20 +149,21 @@ export const StatusBox = styled.span`
 `
 
 export const WasteHistoryList = styled.ul`
-  width: 250px;
-  background-color: var(--green5);
-  min-height: 300px;
+  width: 300px;
+  padding: 10px;
+  background-color: var(--white);
+  max-height: 200px;
   height: 50vh;
   overflow: hidden;
   overflow-y: scroll;
-  padding: 5px;
+ 
   border-radius: 5px;
   
   li{
     background-color: var(--grey2);
     display: flex;
-    justify-content: space-around;
-    padding: 5px;
+    justify-content: space-between;
+    padding: 5px 20px;    
     align-items: center;
     border-radius: 5px;
     margin: 5px 0px;

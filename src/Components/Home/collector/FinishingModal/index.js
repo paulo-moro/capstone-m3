@@ -16,7 +16,7 @@ export const FinishingModal = () =>{
   const {closeModal} = useModal()
   const {wasteData} = useWasteData()
   const {auth} = useAuth()
-  const {addUser, setUser, user} = useUser()
+  const {addUser,  user} = useUser()
   const {getUserWaste} = useUserWaste()  
 
   const [client, setClient] = useState()
@@ -27,15 +27,13 @@ export const FinishingModal = () =>{
       if(type==="collector"){
         addUser(res.data) 
         localStorage.setItem("@Ecoleta_User", JSON.stringify(res.data))
-      } else if(type === "client"){
-        console.log(res.data)
       }      
     
     })
   }   
   useEffect(()=>{
     Api.get(`/users/${wasteData.client_id}`).then((res)=>{
-      console.log(res.data.wallet)
+  
       setClient(res.data)      
     })
 
@@ -58,14 +56,11 @@ export const FinishingModal = () =>{
     }
     const clientWalletRequest = {
       wallet:client.wallet+1
-    }
+    }    
 
-      console.log(client.wallet+1)
-
-    console.log(clientWalletRequest)
   
-    wasteData.status !== "Entregue" && userChangeRequest(user.id, collectorWalletRequest) 
-    wasteData.status !== "Entregue" && userChangeRequest(wasteData.client_id, clientWalletRequest)
+    wasteData.status !== "Entregue" && userChangeRequest(user.id, collectorWalletRequest, "collector") 
+    wasteData.status !== "Entregue" && userChangeRequest(wasteData.client_id, clientWalletRequest, "client")
     closeModal()
 
   }

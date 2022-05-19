@@ -43,7 +43,7 @@ const CardCompany = ({companies}) => {
                 material === "Papel" ?             
               (<StyledWaste background="var(--blue)" key={index}><p>{material}</p></StyledWaste>)
               :
-              material === "Plástico" ?
+              material === "Plastico" ?
               (<StyledWaste background="var(--red)" key={index}><p>{material}</p></StyledWaste>)
               :
               material === "Vidro" ?
@@ -54,6 +54,9 @@ const CardCompany = ({companies}) => {
               :
               material === "Madeira" ?
               (<StyledWaste background="var(--brown)" key={index}><p>{material}</p></StyledWaste>)
+              :
+              material === "Eletronicos" ?
+              (<StyledWaste background="var(--black)" key={index}><p>{material}</p></StyledWaste>)
               :
               material === "Metal" &&
               (<StyledWaste background="var(--yellow)" key={index}><p>{material}</p></StyledWaste>)

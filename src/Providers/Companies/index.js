@@ -14,7 +14,7 @@ export const CompaniesProvider = ({children}) => {
   
   
   return(
-    <CompaniesContext.Provider value={{companies,Companies}}>
+    <CompaniesContext.Provider value={{companies,Companies,setCompanies}}>
       {children}
     </CompaniesContext.Provider>
   )
