@@ -9,6 +9,7 @@ import { RegisterWasteStyle } from "./style"
 import Api from "../../../Api"
 import Button from "../../Global/Button"
 import { useUserWaste } from "../../../Providers/UserRes"
+import { useSnackbar } from "notistack"
 
 const FormRegisterWaste = () => {
   const [isOleo, setIsOleo] = useState(false)
@@ -17,6 +18,7 @@ const FormRegisterWaste = () => {
 	const {closeModal} = useModal()
 	const {getUserWaste, userWaste} = useUserWaste()
 	const [openClose, setOpenClose] = useState(false)
+	const {enqueueSnackbar} = useSnackbar()
 
 	const schema = yup.object().shape({
 		category: yup.string().required("oscolha uma opção"),
@@ -30,15 +32,15 @@ const FormRegisterWaste = () => {
 	const successRegister = () => {
 		getUserWaste(user)
 		closeModal()
-		// snackBar
-		// item cadastrado
-	}
+		enqueueSnackbar("Item removido", {
+			variant: "success",
+			autoHideDuration: 2000,
+			anchorOrigin: {
+				vertical: 'bottom',
+				horizontal: 'right',
+		},
+	})
 
-	
-
-	const failedRegister = () => {
-		// snackbar
-		// falha ao cadastrar item
 	}
 
 
@@ -57,7 +59,6 @@ const FormRegisterWaste = () => {
 			"Authorization": `Bearer ${auth}`
 		}})
 		.then(()=> successRegister())
-		.catch(()=> failedRegister())
 	}
 
 	return (

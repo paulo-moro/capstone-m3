@@ -14,6 +14,7 @@ export const UserWasteProvider = ({children})=> {
   const {auth} = useAuth()
   const [userWaste, setUserWaste] = useState([])
   const {user,addUser} = useUser()
+  const {enqueueSnackbar} = useSnackbar()
 
   useEffect(()=>{
     auth && addUser(JSON.parse(localStorage.getItem("@Ecoleta_User")))
@@ -26,10 +27,10 @@ export const UserWasteProvider = ({children})=> {
      
     type === "client" ?
     await axios.get(`https://api-capstone-m3.herokuapp.com/waste`,{headers:{"Authorization":`Bearer ${auth}`}})
-    .then(res=>setUserWaste(res.data.filter((waste)=>{  
+    .then(res=>{setUserWaste(res.data.filter((waste)=>{  
          
       return waste.client_id === id
-    })))
+    }))})
     .catch(err=>err)
     :type === "collector" &&     
     await axios.get(`https://api-capstone-m3.herokuapp.com/waste`,{headers:{"Authorization":`Bearer ${auth}`}})
@@ -54,7 +55,14 @@ export const UserWasteProvider = ({children})=> {
         {"Authorization":`Bearer ${auth}`}
       })
       .then((res)=> {
-      
+        enqueueSnackbar("Item removido", {
+          variant: "success",
+          autoHideDuration: 2000,
+          anchorOrigin: {
+            vertical: 'bottom',
+            horizontal: 'right',
+        },
+      })
       })
     
   
@@ -69,7 +77,18 @@ export const UserWasteProvider = ({children})=> {
       headers:
       {"Authorization":`Bearer ${auth}`}
     })
-    .then((res) => getUserWaste(user))
+    .then((res) => {
+      getUserWaste(user)
+      enqueueSnackbar("Item alterado", {
+        variant: "success",
+        autoHideDuration: 2000,
+        anchorOrigin: {
+          vertical: 'bottom',
+          horizontal: 'right',
+      },
+    })
+
+    })
     
   } //Função para modificar propriedades, tanto para cliente quanto coletor, vc deve passar o id do residuo e depois o objeto com as alterações
 
