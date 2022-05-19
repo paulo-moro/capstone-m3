@@ -21,9 +21,10 @@ const CardCompany = ({companies}) => {
       destiny:company,
       status:"Reservado" 
     }
-     
-    closeModal()
-    changeWasteProps(wasteData.id, requestData)
+    
+    company.materials.includes(wasteData.category)?changeWasteProps(wasteData.id, requestData) && closeModal()    
+    :( console.log("escolha uma empresa que atenda o material a ser reciclado"))//modal
+    
    
   }
   
