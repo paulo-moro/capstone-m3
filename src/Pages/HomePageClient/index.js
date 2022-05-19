@@ -73,7 +73,7 @@ const HomeClient = () => {
             </div >
             {inputCity && 
               <div className='city_container'>
-              <input className='city_input' defaultValue="" placeholder="Cidade atual" onChange={e => setNewCity(e.target.value)}/>
+              <input className='city_input' defaultValue={user.city}  placeholder="Cidade atual" onChange={e => setNewCity(e.target.value)}/>
               <Button width='small' padding='10px' onClick={()=> changeCity(newCity)}>Enviar</Button>
               </div>
             }
