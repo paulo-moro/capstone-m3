@@ -14,6 +14,7 @@ export const ClientListWaste = () => {
   const { user, addUser } = useUser();
   const { Auth } = useAuth();
 
+
   const changeWaste = (item) => {
     addInfoWaste(item);
     openSecondModal();

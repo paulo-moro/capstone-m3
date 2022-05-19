@@ -37,6 +37,8 @@ const HomeClient = () => {
 
 
   const changeCity = (city) => {
+    setInputCity(!inputCity)
+
     const changeCity = {
       city: city
     }
@@ -45,8 +47,7 @@ const HomeClient = () => {
       setUser(res.data)
       localStorage.setItem("@Ecoleta_User", JSON.stringify(res.data))
     })
-    // SnackBar => falha al alterar a cidade
-    .catch((err)=> err) 
+    .catch((err)=> "") 
   }
 
   useEffect(()=> {
@@ -56,7 +57,6 @@ const HomeClient = () => {
       addUser(res.data)
       localStorage.setItem("@Ecoleta_User", JSON.stringify(res.data))
     })
-
 
   }, [userWaste.length])
 
@@ -73,7 +73,7 @@ const HomeClient = () => {
             </div >
             {inputCity && 
               <div className='city_container'>
-              <input className='city_input' value={newCity} placeholder="Cidade atual" onChange={e => setNewCity(e.target.value)}/>
+              <input className='city_input' defaultValue="" placeholder="Cidade atual" onChange={e => setNewCity(e.target.value)}/>
               <Button width='small' padding='10px' onClick={()=> changeCity(newCity)}>Enviar</Button>
               </div>
             }
