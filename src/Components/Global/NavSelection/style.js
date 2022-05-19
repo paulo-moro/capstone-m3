@@ -24,14 +24,12 @@ export const StyledNavList = styled.ul`
     top: -90px;
     
   }
-  .navOpt li{
+  .navOpt a{
     color: var(--green2);
     background-color: var(--white);
     padding: 5px;
     height: 25px;
     width: 120px;
-    
-
   }
   .navOpt li:hover{
     cursor: pointer;
