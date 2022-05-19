@@ -34,6 +34,14 @@ const ChangeWasteClient = () => {
   const changeWaste = (data) => {
     closeSecondModal()
     changeWasteProps(infoWaste.id, data)
+    enqueueSnackbar("Resíduo alterado", {
+      variant: "success",
+      autoHideDuration: 2000,
+      anchorOrigin: {
+        vertical: 'bottom',
+        horizontal: 'right',
+    },
+  })
 
   }
 

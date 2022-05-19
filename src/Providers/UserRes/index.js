@@ -24,6 +24,7 @@ export const UserWasteProvider = ({children})=> {
  
 
   const  getUserWaste = async ({id,type}) => {
+
     type === "client" ?
     await axios.get(`https://api-capstone-m3.herokuapp.com/waste`,{headers:{"Authorization":`Bearer ${auth}`}})
     .then(res=>{setUserWaste(res.data.filter((waste)=>{  
@@ -64,7 +65,6 @@ export const UserWasteProvider = ({children})=> {
       })
       })
     
-  
   }
     
     
@@ -78,15 +78,6 @@ export const UserWasteProvider = ({children})=> {
     })
     .then((res) => {
       getUserWaste(user)
-      enqueueSnackbar("Resíduo alterado", {
-        variant: "success",
-        autoHideDuration: 2000,
-        anchorOrigin: {
-          vertical: 'bottom',
-          horizontal: 'right',
-      },
-    })
-
     })
     
   } //Função para modificar propriedades, tanto para cliente quanto coletor, vc deve passar o id do residuo e depois o objeto com as alterações
