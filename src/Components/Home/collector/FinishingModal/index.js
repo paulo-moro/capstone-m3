@@ -9,7 +9,7 @@ import { useUserWaste } from "../../../../Providers/UserRes"
 import { useWasteData } from "../../../../Providers/WasteData"
 import { StyledContainer, StyledForm } from "../../../LandingPage-Components/FormLogin/style"
 import { StyledImg } from "./style"
-
+import { useSnackbar } from "notistack"
 
 export const FinishingModal = () =>{
   const {changeWasteProps} = useUserWaste()  
@@ -18,6 +18,7 @@ export const FinishingModal = () =>{
   const {auth} = useAuth()
   const {addUser,  user} = useUser()
   const {getUserWaste} = useUserWaste()  
+  const {enqueueSnackbar}= useSnackbar()
 
   const [client, setClient] = useState()
 
@@ -57,7 +58,13 @@ export const FinishingModal = () =>{
     const clientWalletRequest = {
       wallet:client.wallet+1
     }    
-
+    enqueueSnackbar("Entrega realizada com sucesso para a empresa.", {
+      variant: "success",
+      autoHideDuration: 2000,
+      anchorOrigin: {
+        vertical: 'bottom',
+        horizontal: 'right',
+  }})
   
     userChangeRequest(user.id, collectorWalletRequest, "collector") 
     userChangeRequest(wasteData.client_id, clientWalletRequest, "client")
