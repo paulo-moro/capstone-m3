@@ -37,7 +37,7 @@ const HomeClient = () => {
 
 
   const changeCity = (city) => {
-    setInputCity(!inputCity)
+    
 
     const changeCity = {
       city: city
@@ -46,6 +46,7 @@ const HomeClient = () => {
     .then((res)=> {
       setUser(res.data)
       localStorage.setItem("@Ecoleta_User", JSON.stringify(res.data))
+      setInputCity(!inputCity)
     })
     .catch((err)=> "") 
   }
@@ -73,7 +74,7 @@ const HomeClient = () => {
             </div >
             {inputCity && 
               <div className='city_container'>
-              <input className='city_input' defaultValue={user.city}  placeholder="Cidade atual" onChange={e => setNewCity(e.target.value)}/>
+              <input className='city_input'  required placeholder="Cidade atual" onChange={e => setNewCity(e.target.value)}/>
               <Button width='small' padding='10px' onClick={()=> changeCity(newCity)}>Enviar</Button>
               </div>
             }
