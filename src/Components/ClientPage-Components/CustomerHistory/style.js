@@ -9,7 +9,6 @@ width: 100%;
 	overflow-y:scroll;
 	gap: 1rem;
 
-
 	li{
 		width:calc((100% - 1rem)/ 2);
 		max-width:170px;
@@ -42,7 +41,13 @@ width: 100%;
 			background-color:transparent;
 		}
 	}
-
+	h2 {
+		font-size: 20px;
+		font-weight: bold;
+		width: 100%;
+	    text-align: center;
+		margin-top: 30px;
+	}
 
 	@media (min-width: 550px){
 		li{

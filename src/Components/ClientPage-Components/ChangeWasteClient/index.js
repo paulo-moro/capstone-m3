@@ -8,14 +8,15 @@ import { FormChange } from "./style"
 import { useUser } from "../../../Providers/user"
 import { useEffect } from "react"
 import { useSecondModal } from "../../../Providers/SecondModal"
+import Button from "../../Global/Button"
 
 const ChangeWasteClient = () => {
-  const {changeWasteProps, rmvClientWaste, getUserWaste, userWaste} = useUserWaste()
+  const { changeWasteProps, rmvClientWaste, getUserWaste, userWaste } = useUserWaste()
   const { infoWaste } = useInfoWaste()
-  const {closeSecondModal, secondModal} = useSecondModal()
-  const {user} = useUser()
+  const { closeSecondModal, secondModal } = useSecondModal()
+  const { user } = useUser()
 
-  useEffect(()=> {
+  useEffect(() => {
     getUserWaste(user)
   }, [secondModal])
 
@@ -24,11 +25,11 @@ const ChangeWasteClient = () => {
     measure: yup.number().required("Campo obrigatório")
   })
 
-  const {register, handleSubmit, formState: {errors}} = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   })
 
-  const changeWaste = async(data) => {
+  const changeWaste = async (data) => {
     closeSecondModal()
     await changeWasteProps(infoWaste.id, data)
     // snackBar
@@ -43,19 +44,20 @@ const ChangeWasteClient = () => {
 
   }
 
-  return(
+  return (
     <FormChange onSubmit={handleSubmit(changeWaste)}>
-      <input type="url" defaultValue={infoWaste.image} {...register("image")}/>
+      <input type="url" defaultValue={infoWaste.image} {...register("image")} />
       <select defaultValue={infoWaste.category} {...register("category")}>
         <option>Papel</option>
         <option>Plastico</option>
         <option>Eletronico</option>
         <option>Óleo</option>
       </select>
-      <input defaultValue={infoWaste.measure} type="number" {...register("measure")}/>
-      <button type="submit">Alterar informações</button>
-      <span>ou</span>
-      <button  onClick={()=>removeWaste()}>excluir Resíduo</button>
+      <input defaultValue={infoWaste.measure} type="number" {...register("measure")} />
+      <div>
+        <Button type="submit" width='200px' padding='10px' fontSize='15px'>Alterar Informações</Button>
+        <button className='delButton' onClick={() => removeWaste()}>Excluir Resíduo</button>
+      </div>
     </FormChange>
   )
 }

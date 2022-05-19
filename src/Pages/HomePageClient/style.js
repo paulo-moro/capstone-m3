@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import img from "../../Assets/img/simbolo-reciclagem-1.png"
 
 export const ClientDiv = styled.div`
-
+  margin-top: 20px;
+  
   h3{
     font-weight:bold;
     max-width:320px;
@@ -10,7 +11,7 @@ export const ClientDiv = styled.div`
 
   section{
     width:100%;
-    height: 170px;
+    height: 100px;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
@@ -36,6 +37,36 @@ export const ClientDiv = styled.div`
     .city{
       cursor: pointer;
     }
+  }
+
+
+  .city_input {
+		width:200px;
+    min-height: 40px;
+    border-radius:8px;
+    background-color: var(--white);
+    padding-left:10px;
+    text-align: center;
+    color: var(--green1);
+    border: 2px solid var(--green1);
+
+    ::placeholder{
+      padding-left:10px;
+    color: var(--green1);
+
+      
+    }
+    :focus {
+      outline: none;
+      border: 2px solid var(--green1)
+    }
+	}
+  
+  .city_container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
   }
 
   .image{

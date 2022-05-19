@@ -22,7 +22,7 @@ export const ClientListWaste = () => {
   return(
       <ListWasteClient>
       
-        {userWaste.map((item, index)=> 
+        {userWaste.length > 0 ? userWaste.map((item, index)=> 
         item.status === "Pendente" &&
           <li onClick={()=> changeWaste(item)} key={index}>
             <div className="div-img">
@@ -34,7 +34,10 @@ export const ClientListWaste = () => {
               <p>{item.status}</p>
             </div>
           </li> 
-        )}
+        )
+       :
+       <h2>Registre seu pedido em cadastrar coleta!</h2>
+      }
         
       </ListWasteClient>
     
