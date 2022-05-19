@@ -14,6 +14,7 @@ padding-top: 15px;
   }
   .containerModalWaste {
     width: 95%;
+    max-width: 350px;
     font-size: 13px;
     text-align: center;  
     border-radius: 5px;
@@ -24,6 +25,7 @@ padding-top: 15px;
     gap: 0.5rem;
     padding: 10px;    
     justify-content: center;
+    align-items: center;
   
 
     @media (min-width: 768px) {
@@ -75,14 +77,13 @@ padding-top: 15px;
 
   .containerBtnModalWaste {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     width: 100%;
 
-    @media (min-width: 768px) {
-      justify-content: flex-start;
-    }
+  
   }
 
   .btnWasteModalWaste {    
