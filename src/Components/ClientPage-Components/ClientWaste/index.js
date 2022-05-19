@@ -26,7 +26,7 @@ export const ClientListWaste = () => {
         item.status === "Pendente" &&
           <li onClick={()=> changeWaste(item)} key={index}>
             <div className="div-img">
-              <img src={item.image}/>
+              <img src={item.image} alt={item.category}/>
             </div>
             <div className="info">
               <h3>{item.category}</h3>

@@ -9,7 +9,7 @@ import { useUser } from "../../Providers/user"
 
 const CardCompany = ({companies}) => { 
 
-  const {wasteData,setWasteData} = useWasteData()
+  const {wasteData} = useWasteData()
   const {closeModal} = useModal()
   const {changeWasteProps} = useUserWaste()
   const {user} = useUser()
@@ -21,10 +21,10 @@ const CardCompany = ({companies}) => {
       destiny:company,
       status:"Reservado" 
     }
-     
-    closeModal()
-    changeWasteProps(wasteData.id, requestData)
-   
+    company.materials.includes(wasteData.category)?changeWasteProps(wasteData.id, requestData) && closeModal()    
+    :( console.log("escolha uma empresa que atenda o material a ser reciclado"))//modal
+       
+    
   }
   
   
@@ -41,25 +41,22 @@ const CardCompany = ({companies}) => {
             company.materials?.map((material, index) => {
               return (
                 material === "Papel" ?             
-              (<StyledWaste background="var(--blue)" key={index}><p>{material}</p></StyledWaste>)
+              (<StyledWaste background="var(--blue)" key={index}><p>Papel</p></StyledWaste>)
               :
               material === "Plastico" ?
-              (<StyledWaste background="var(--red)" key={index}><p>{material}</p></StyledWaste>)
+              (<StyledWaste background="var(--red)" key={index}><p>Plástico</p></StyledWaste>)
               :
               material === "Vidro" ?
-              (<StyledWaste background="var(--green3)" key={index}><p>{material}</p></StyledWaste>)
+              (<StyledWaste background="var(--green3)" key={index}><p>Vidro</p></StyledWaste>)
               :
               material === "Óleo" ?
-              (<StyledWaste background="var(--orange)" key={index}><p>{material}</p></StyledWaste>)
-              :
-              material === "Madeira" ?
-              (<StyledWaste background="var(--brown)" key={index}><p>{material}</p></StyledWaste>)
+              (<StyledWaste background="var(--orange)" key={index}><p>Óleo</p></StyledWaste>)
               :
               material === "Eletronicos" ?
-              (<StyledWaste background="var(--black)" key={index}><p>{material}</p></StyledWaste>)
+              (<StyledWaste background="var(--black)" key={index}><p>Eletrônico</p></StyledWaste>)
               :
               material === "Metal" &&
-              (<StyledWaste background="var(--yellow)" key={index}><p>{material}</p></StyledWaste>)
+              (<StyledWaste background="var(--yellow)" key={index}><p>Metal</p></StyledWaste>)
               )})              
             }
           </div>        
