@@ -9,15 +9,16 @@ import { useUser } from "../../../Providers/user"
 import { useEffect } from "react"
 import { useSecondModal } from "../../../Providers/SecondModal"
 import { useSnackbar } from "notistack"
+import Button from "../../Global/Button"
 
 const ChangeWasteClient = () => {
-  const {changeWasteProps, rmvClientWaste, getUserWaste, userWaste} = useUserWaste()
+  const { changeWasteProps, rmvClientWaste, getUserWaste, userWaste } = useUserWaste()
   const { infoWaste } = useInfoWaste()
   const {closeSecondModal, secondModal} = useSecondModal()
   const {user} = useUser()
   const { enqueueSnackbar } = useSnackbar()
 
-  useEffect(()=> {
+  useEffect(() => {
     getUserWaste(user)
   }, [secondModal])
 
@@ -26,7 +27,7 @@ const ChangeWasteClient = () => {
     measure: yup.number().required("Campo obrigatório")
   })
 
-  const {register, handleSubmit, formState: {errors}} = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   })
 
@@ -58,9 +59,9 @@ const ChangeWasteClient = () => {
 
   }
 
-  return(
+  return (
     <FormChange onSubmit={handleSubmit(changeWaste)}>
-      <input type="url" defaultValue={infoWaste.image} {...register("image")}/>
+      <input type="url" defaultValue={infoWaste.image} {...register("image")} />
       <select defaultValue={infoWaste.category} {...register("category")}>
         <option>Papel</option>
         <option>Plastico</option>
@@ -69,10 +70,11 @@ const ChangeWasteClient = () => {
         <option>Metal</option>
         <option>Vidro</option>
       </select>
-      <input defaultValue={infoWaste.measure} type="number" {...register("measure")}/>
-      <button type="submit">Alterar informações</button>
-      <span>ou</span>
-      <button  onClick={()=>removeWaste()}>excluir Resíduo</button>
+      <input defaultValue={infoWaste.measure} type="number" {...register("measure")} />
+      <div>
+        <Button type="submit" width='200px' padding='10px' fontSize='15px'>Alterar Informações</Button>
+        <button className='delButton' onClick={() => removeWaste()}>Excluir Resíduo</button>
+      </div>
     </FormChange>
   )
 }

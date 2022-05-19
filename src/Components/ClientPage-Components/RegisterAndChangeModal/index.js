@@ -7,6 +7,7 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: '100%',
+  height: '300px',
   maxWidth: '500px',
   minWidth: '300px',
   bgcolor: 'background.paper',

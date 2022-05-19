@@ -1,12 +1,10 @@
 import { useState } from "react";
-import Header from "../../Components/Global/Header";
-import { StyledFooter, StyledMain } from "./style";
+import caminhao from "../../Assets/img/caminhao.png";
+import ecocoins from "../../Assets/img/ecocoins.png";
+import recicle from "../../Assets/img/recicle.png";
 import { NavSelection } from "../../Components/Global/NavSelection";
 import { useHeader } from "../../Providers/Header";
-import recicle from "../../Assets/img/recicle.png";
-import ecocoins from "../../Assets/img/ecocoins.png";
-import caminhao from "../../Assets/img/caminhao.png";
-import chat from "../../Assets/img/chat.png";
+import { StyledFooter, StyledMain } from "./style";
 
 const AboutUs = () => {
   const [aboutUs, setAboutUs] = useState([
@@ -30,20 +28,20 @@ const AboutUs = () => {
       title: "Ecopoints",
       description:
         "O cliente receberá ecoPoints a cada pedido de coleta feito no App, onde futuramente poderão ser trocados por dinheiro ou cupons de desconto",
-    },
-    {
-      id: 4,
-      img: chat,
-      title: "Diferencial",
-      description:
-        "O Ecoleta possui de centralizar a comunicação entre cliente e trabalhador dentro do App",
-    },
+    }
+    //,
+    //{
+      //id: 4,
+      //img: chat,
+      //title: "Diferencial",
+      //description:
+      //  "O Ecoleta possui de centralizar a comunicação entre cliente e trabalhador dentro do App",
+    //},
   ]);
   const { changeHeader } = useHeader();
   changeHeader("video");
   return (
     <>
-      <Header />
       <StyledMain>
         <h1>Sobre Nós</h1>
         <ul className="aboutUs--container">
@@ -51,7 +49,7 @@ const AboutUs = () => {
             <li key={id}>
               <section>
                 <div className="img">
-                  <img src={img}></img>
+                  <img src={img} alt=''></img>
                 </div>
                 <div className="text">
                   <h3>{title}</h3>

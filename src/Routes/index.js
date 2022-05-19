@@ -1,4 +1,4 @@
-import {Route, Switch} from "react-router-dom"
+import { Route, Switch } from "react-router-dom"
 import AboutUs from "../Pages/AboutUs"
 import Devs from "../Pages/Devs"
 import HomeClient from "../Pages/HomePageClient"

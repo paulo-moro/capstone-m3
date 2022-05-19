@@ -62,15 +62,17 @@ const FormRegisterWaste = () => {
 
 	return (
 		<RegisterWasteStyle onSubmit={handleSubmit(registerWaste)}>
-			<input type="text" placeholder="Insira a url da imagem" {...register("image")}/>
+			<input type="text" required placeholder="Insira a url da imagem" {...register("image")}/>
 			<select onClick={(e)=> e.target.value === "Óleo" ? setIsOleo(true): setIsOleo(false)} {...register("category")}>
 				<option>Papel</option>
-				<option>Plastico</option>
-				<option>Eletronico</option>
+				<option value="Plastico">Plástico</option>
+				<option value="Eletronicos">Eletrônico</option>
 				<option>Óleo</option>
+				<option>Vidro</option>
+				<option>Metal</option>
 			</select>
-			<input type="number" placeholder={isOleo ? "litros" : "peso"} {...register("measure")}/> 
-			<Button width={"60%"} padding={"10px"} fontSize={"15px"}  onClick={()=> setOpenClose(!openClose)}>Cadastrar</Button>
+			<input type="number" required placeholder={isOleo ? "Litros" : "Peso"} {...register("measure")}/> 
+			<Button width={"60%"} padding={"15px"} fontSize={"15px"}  onClick={()=> setOpenClose(!openClose)}>Cadastrar</Button>
 		</RegisterWasteStyle>
 	)
 }
