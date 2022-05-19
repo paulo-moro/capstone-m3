@@ -2,7 +2,8 @@
 import { useEffect, useState } from "react"
 import { FaMapMarkerAlt, FaWallet } from "react-icons/fa"
 import Api from "../../Api"
-import RawModal from "../../Components/LandingPage-Components/RegisterModal"
+import Button from "../../Components/Global/Button"
+import CollectorModal from "../../Components/Home/collector/ModalCollector"
 import { useCompany } from "../../Providers/Companies"
 import { useHeader } from "../../Providers/Header"
 import { useModal } from "../../Providers/Modal"
@@ -73,7 +74,7 @@ const HomeCollector = () => {
       <section className="containerHomeCollector">
         
         {
-          modal && <RawModal type={modalType}/>
+          modal && <CollectorModal type={modalType}/>
         }        
         
         {         
@@ -84,7 +85,7 @@ const HomeCollector = () => {
                 <h2 className="userInformationH2 userInformationH2Single"><FaMapMarkerAlt/> {user.city}</h2>
             </div>  
           <div className="containerBtnHomeCollector">            
-            <button className="btnHomeCollector" onClick={handleWasteModal}>Coletas</button>         
+            <Button className="btnHomeCollector" width='300px' whiteButton onClick={handleWasteModal}>Pegar nova entrega</Button>         
           </div>
               <div className="historic__type historic__type--container">
                 <input type="radio" id="currentCollect" name="chosingList" className="current__collections current__collection--input" onChange={()=>setHistory(false)}/>
