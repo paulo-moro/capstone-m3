@@ -1,15 +1,18 @@
 // historico dos residuos do usuario
 import axios from "axios";
+import { useSnackbar } from "notistack";
 import { createContext, useEffect,  useState, useContext } from "react";
 import { useAuth } from "../IsAuth";
 import { useUser } from "../user";
+
+
+
 export const UserWasteContext = createContext()
 
 
-export const UserWasteProvider = ({children}) => {
+export const UserWasteProvider = ({children})=> {
   const {auth} = useAuth()
   const [userWaste, setUserWaste] = useState([])
-  
   const {user,addUser} = useUser()
 
   useEffect(()=>{
@@ -50,8 +53,12 @@ export const UserWasteProvider = ({children}) => {
         headers:
         {"Authorization":`Bearer ${auth}`}
       })
-      .then((res) => console.log(res))
-    }
+      .then((res)=> {
+      
+      })
+    
+  
+  }
     
     
   }//função para deletar waste da lista do cliente, função somente para cliente

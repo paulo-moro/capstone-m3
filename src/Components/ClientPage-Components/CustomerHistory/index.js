@@ -14,7 +14,6 @@ export const CustomerHistory = ({isColeta}) => {
 	useEffect(()=>{
 		getUserWaste(user)
 		const filter = userWaste.filter((item)=> item.status !== "Pendente")
-		console.log(filter)
 		setHistoric(filter)
 	},[isColeta])
 

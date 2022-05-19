@@ -12,7 +12,6 @@ export const ModalProvider = ({children}) => {
 
     const closeModal = () => {
         setModal(false)
-        console.log("fechou o modal")
     }
 
 

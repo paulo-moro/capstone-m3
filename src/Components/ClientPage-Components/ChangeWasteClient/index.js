@@ -8,12 +8,14 @@ import { FormChange } from "./style"
 import { useUser } from "../../../Providers/user"
 import { useEffect } from "react"
 import { useSecondModal } from "../../../Providers/SecondModal"
+import { useSnackbar } from "notistack"
 
 const ChangeWasteClient = () => {
   const {changeWasteProps, rmvClientWaste, getUserWaste, userWaste} = useUserWaste()
   const { infoWaste } = useInfoWaste()
   const {closeSecondModal, secondModal} = useSecondModal()
   const {user} = useUser()
+  const { enqueueSnackbar } = useSnackbar()
 
   useEffect(()=> {
     getUserWaste(user)
@@ -28,18 +30,31 @@ const ChangeWasteClient = () => {
     resolver: yupResolver(schema)
   })
 
-  const changeWaste = async(data) => {
+  const changeWaste = (data) => {
     closeSecondModal()
-    await changeWasteProps(infoWaste.id, data)
-    // snackBar
-    // Item Alterado
+    changeWasteProps(infoWaste.id, data)
+    enqueueSnackbar("Item alterado", {
+      variant: "success",
+      autoHideDuration: 2000,
+      anchorOrigin: {
+        vertical: 'bottom',
+        horizontal: 'right',
+    },
+    });
   }
 
   const removeWaste = () => {
     closeSecondModal()
     rmvClientWaste(user, infoWaste.id)
-    // snackBar
-    // Item Removido
+    enqueueSnackbar("Item removido", {
+      variant: "success",
+      autoHideDuration: 2000,
+      anchorOrigin: {
+        vertical: 'bottom',
+        horizontal: 'right',
+    },
+    });
+    
 
   }
 

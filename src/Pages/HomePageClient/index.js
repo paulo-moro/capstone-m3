@@ -46,7 +46,7 @@ const HomeClient = () => {
       localStorage.setItem("@Ecoleta_User", JSON.stringify(res.data))
     })
     // SnackBar => falha al alterar a cidade
-    .catch((err)=> console.log(err)) 
+    .catch((err)=> err) 
   }
 
   useEffect(()=> {
