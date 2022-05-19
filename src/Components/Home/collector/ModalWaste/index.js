@@ -1,7 +1,7 @@
 import CardWaste from "../CardWaste"
 import {CardContainerWaste, WasteModal} from "./style"
 import {useEffect, useState} from "react"
-import { useUserWaste } from "../../Providers/UserRes"
+import { useUserWaste } from "./../../../../Providers/UserRes"
 
 
 

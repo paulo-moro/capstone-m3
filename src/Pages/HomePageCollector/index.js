@@ -11,7 +11,7 @@ import { useUserWaste } from "../../Providers/UserRes"
 import { useWasteData } from "../../Providers/WasteData"
 import { useAuth } from "./../../Providers/IsAuth"
 import { useUser } from "./../../Providers/user"
-import { CollectorHome, StatusBox, WasteHistoryList } from "./style"
+import { CollectorHome, StatusBox, StyledFooter, WasteHistoryList } from "./style"
 
 
 
@@ -68,6 +68,7 @@ const HomeCollector = () => {
   }
   
   return(
+    <>
     <CollectorHome>      
       <section className="containerHomeCollector">
         
@@ -118,7 +119,9 @@ const HomeCollector = () => {
           </div>                
         }        
       </section>      
-    </CollectorHome>      
+    </CollectorHome>
+    <StyledFooter><button>Pegar nova entrega</button></StyledFooter> 
+    </>     
   )
 }
 

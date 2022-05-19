@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const CollectorHome = styled.main`
   background-color: var(--gray1);
-  height: 100vh;
+  height: 71vh;
   width: 100vw;
   max-width: 1220px;
   margin: 0 auto;
@@ -29,7 +29,7 @@ export const CollectorHome = styled.main`
     width: 90px;
     height: 25px;
     padding-left: 10px;
-    display: flex;
+    display: none;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -38,6 +38,10 @@ export const CollectorHome = styled.main`
     color: var(--green1);
     font-weight: bold;
     cursor: pointer;
+
+    @media(min-width: 500px){
+      display: flex;
+    }
   }
 
   .userContainerInformation {
@@ -76,25 +80,12 @@ export const CollectorHome = styled.main`
     
 
   .welcomeUser {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 140%;
+    font-weight:700;
     text-align: center;
+    width: 100%;
 
-    @media(min-width:550px){
-      
-    }
-
-    @media (min-width: 768px) {
-      font-size: 30px;
-    }
-
-    @media (min-width: 1024px) {
-      font-size: 40px;
-    }
-
-    @media (min-width: 1440px) {
-      font-size: 40px;
-    }
+    
   }
 
   .containerUserInformationH2 {
@@ -141,17 +132,7 @@ export const CollectorHome = styled.main`
     font-size: 20px;
     padding-top: 20px;
 
-    /* @media (min-width: 768px) {
-      font-size: 30px;
-    } */
-
-    @media (min-width: 1024px) {
-      font-size: 30px;
-    }
-
-    @media (min-width: 1440px) {
-      font-size: 30px;
-    }
+    
   }
 `
 
@@ -199,4 +180,18 @@ export const WasteHistoryList = styled.ul`
   @media(min-width:550px){
     max-width: 450px;
   }
+`
+export const StyledFooter = styled.footer`
+button{
+  width: 100%;
+  height: 20vh;
+  background-color: var(--green2);
+  border: var(--green2) 2px solid;
+  color: var(--white);
+  font-weight: 700;
+  @media(min-width:500px){
+    display: none;
+  }
+}
+
 `

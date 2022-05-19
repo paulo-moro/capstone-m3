@@ -22,18 +22,18 @@ export const CardContainer = styled.ul`
   }
 
   li {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  justify-content: space-around;
-  width: 240px;
-  height: 280px;
-  padding: 15px;
-  background-color: var(--grey2);
-  list-style: none;
-  border-radius: 10px;
-  margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+    width: 240px;
+    height: 280px;
+    padding: 15px;
+    background-color: var(--grey2);
+    list-style: none;
+    border-radius: 10px;
+    margin: 0 auto;
   }
 
   img {

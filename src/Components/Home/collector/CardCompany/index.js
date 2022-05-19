@@ -1,19 +1,20 @@
 import {CardContainer, StyledWaste} from "./style"
-import Button from "../Global/Button"
-import company1 from "./../../Images/company1.webp"
+import Button from "../../../Global/Button"
+import company1 from "./../../../../Assets/Images/company1.webp"
 
-import { useWasteData } from "../../Providers/WasteData"
-import { useModal } from "../../Providers/Modal"
-import { useUserWaste } from "../../Providers/UserRes"
-import { useUser } from "../../Providers/user"
+import { useWasteData } from "./../../../../Providers/WasteData"
+import { useModal } from "./../../../../Providers/Modal"
+import { useUserWaste } from "./../../../../Providers/UserRes"
+import { useUser } from "./../../../../Providers/user"
+import { useSnackbar } from "notistack"
 
 const CardCompany = ({companies}) => { 
 
-  const {wasteData,setWasteData} = useWasteData()
+  const {wasteData} = useWasteData()
   const {closeModal} = useModal()
   const {changeWasteProps} = useUserWaste()
   const {user} = useUser()
-
+  const {enqueueSnackbar} = useSnackbar()
  
 
   const handleChose = (company) => {
@@ -26,10 +27,24 @@ const CardCompany = ({companies}) => {
     const finishReserve = () =>{
       changeWasteProps(wasteData.id, requestData) 
       closeModal()  
+      enqueueSnackbar("Reserva Realizada com sucesso.", {
+				variant: "success",
+				autoHideDuration: 2000,
+        anchorOrigin: {
+          vertical: 'bottom',
+          horizontal: 'right',
+    }})
     }
+
     company.materials.includes(wasteData.category)?
       finishReserve()
-    :( console.log("escolha uma empresa que atenda o material a ser reciclado"))//modal
+    :( enqueueSnackbar("Selecione uma empresa que atenda esse tipo de resíduo.", {
+				variant: "error",
+				autoHideDuration: 2000,
+        anchorOrigin: {
+          vertical: 'bottom',
+          horizontal: 'right',
+    }}))
     
    
   }

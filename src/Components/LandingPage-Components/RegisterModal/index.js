@@ -2,8 +2,8 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { useModal } from '../../../Providers/Modal';
 import FormRegister from '../FormRegister';
-import ModalWaste from '../../ModalWaste';
-import ModalCompany from '../../ModalCompany';
+import ModalWaste from './../../Home/collector/ModalWaste';
+import ModalCompany from './../../Home/collector/ModalCompany';
 import { FinishingModal } from '../../Home/collector/FinishingModal';
 
 const style = {

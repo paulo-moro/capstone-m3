@@ -2,7 +2,7 @@ import CardCompany from "../CardCompany"
 import {CompanyModal} from "./style"
 import {FaSearch} from "react-icons/fa"
 import {useEffect, useState} from "react"
-import { useCompany } from "../../Providers/Companies"
+import { useCompany } from "./../../../../Providers/Companies"
 
 const ModalCompany = () => {  
   const {companies,Companies} = useCompany()

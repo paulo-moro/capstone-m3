@@ -1,9 +1,8 @@
 
-import Button from "../Global/Button"
-import waste1 from "./../../Images/waste1.webp"
+import Button from "../../../Global/Button" 
 
-import { useWasteData } from "../../Providers/WasteData"
-import { useModalType } from "../../Providers/ModalTypes"
+import { useWasteData } from "./../../../../Providers/WasteData"
+import { useModalType } from "./../../../../Providers/ModalTypes"
 
 
 

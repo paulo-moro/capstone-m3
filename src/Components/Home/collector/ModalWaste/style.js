@@ -13,7 +13,7 @@ padding-top: 15px;
     text-align: center;
   }
   .containerModalWaste {
-    width: 75%;
+    width: 95%;
     font-size: 13px;
     text-align: center;  
     border-radius: 5px;
