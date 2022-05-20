@@ -59,7 +59,7 @@ const ChangeWasteClient = () => {
       <select defaultValue={infoWaste.category} {...register("category")}>
         <option>Papel</option>
         <option>Plastico</option>
-        <option>Eletronico</option>
+        <option value="Eletronicos">Eletronico</option>
         <option>Óleo</option>
         <option>Metal</option>
         <option>Vidro</option>

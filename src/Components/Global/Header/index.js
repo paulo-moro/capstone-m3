@@ -8,13 +8,15 @@ import { useAuth } from '../../../Providers/IsAuth'
 import Button from '../Button'
 import { StyledHeader } from "./style"
 
+
 const Header = () => {
   const { headerType } = useHeader()
   const {auth,handleAuth} = useAuth()
   const {openModal} = useModal()
+
   const history = useHistory()
   const handleLogout = () =>{
-    localStorage.clear()
+    localStorage.clear()   
     history.push("/")
     handleAuth()
   }

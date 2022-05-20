@@ -12,31 +12,24 @@ export const ClientListWaste = () => {
   const { openSecondModal } = useSecondModal();
   const { addInfoWaste } = useInfoWaste();
   const { user, addUser } = useUser();
-  const { Auth } = useAuth();
+  const { auth } = useAuth();
 
 
   const changeWaste = (item) => {
     addInfoWaste(item);
     openSecondModal();
   };
+ 
 
-  useEffect(() => {
-    function loopFunction(delay) {
-      function loop() {
-        getUserWaste(user);
-        Api.get(`/users/${user.id}`, {
-          headers: { Authorization: `Bearer ${Auth}` },
+  useEffect(()=>{
+    getUserWaste(user);
+    Api.get(`/users/${user.id}`, {
+          headers: { Authorization: `Bearer ${auth}` },
         }).then((res) => {
           addUser(res.data)
           localStorage.setItem("@Ecoleta_User", JSON.stringify(res.data))
         });
-
-        setTimeout(loop, delay);
-      }
-      loop();
-    }
-    loopFunction(5000);
-  }, []);
+  },[user.length])
 
   return (
     <ListWasteClient>

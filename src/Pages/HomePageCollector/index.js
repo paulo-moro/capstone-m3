@@ -25,7 +25,7 @@ const HomeCollector = () => {
   const {addWasteData} = useWasteData()
   const {openModal,modal,closeModal}= useModal()
   const {modalType, changeModal} = useModalType()
-  const { userWaste,setUserWaste } = useUserWaste() 
+  const { userWaste,setUserWaste,getUserWaste } = useUserWaste() 
   const {setCompanies} = useCompany() 
 
   const [filtered,setFiltered] = useState()
@@ -57,6 +57,7 @@ const HomeCollector = () => {
 
   const handleWasteModal = () =>{
     openModal()
+    getUserWaste(user)
     changeModal("waste")   
 
   }
