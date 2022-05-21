@@ -5,9 +5,9 @@ import { useModalType } from "../../../Providers/ModalTypes"
 import { useUser } from "../../../Providers/user"
 import { useUserWaste } from "../../../Providers/UserRes"
 import { useWasteData } from "../../../Providers/WasteData"
-import { StyledWaste } from "./style"
+import { StyledCard, StyledWaste } from "./style"
 
-import company1 from "./../../../../Assets/Images/company1.webp"
+import company1 from "./../../../Assets/Images/company1.webp"
 
 
 export const Card = ({listItem, type}) =>{
@@ -19,7 +19,7 @@ export const Card = ({listItem, type}) =>{
   const {enqueueSnackbar} = useSnackbar()
   const {changeModal} = useModalType()
   const {addWasteData} = useWasteData()
-  
+
   const handleChoseCompany = (company) => {
     
     const requestData = {
@@ -58,13 +58,19 @@ export const Card = ({listItem, type}) =>{
     addWasteData(listItem)
   }
 
+  return(
  
   type === "companies"?
   
-  ( <>
-    <li>      
-      <figure><img src={company1} alt={name}/></figure>
-      <section><h3>{name}</h3> <p>{city}</p></section>
+  ( 
+    <StyledCard>      
+      <figure>
+        <img src={company1} alt={name}/>
+      </figure>
+      <section>
+        <h3>{name}</h3> 
+        <p>{city}</p>
+      </section>
       <div className="materials--container">
         
         {materials?.map((material,index)=>(
@@ -90,17 +96,18 @@ export const Card = ({listItem, type}) =>{
            (<StyledWaste background="var(--yellow)" key={index}><p>{material}</p></StyledWaste>)
         ))}
       </div>
-      <Button onClick={()=>handleChoseCompany(listItem)}>Escolher</Button>
-    
-    </li>
-    </>
+      <Button width="small" onClick={()=>handleChoseCompany(listItem)}>Escolher</Button>
+    </StyledCard>    
     )
   :type === "waste" &&(
-  <li>  
-    <img src={image} alt={category}/>
-      <h2>{category}</h2>
-      <h3>{measure} {category === "Óleo"?"Litros":"Kg"}</h3>
-    <Button onClick={handleOpenCompanyModal} >{status}</Button>
-  </li>    
+    <StyledCard>  
+      <figure><img src={image} alt={category}/></figure>
+      <section className="info">
+        <h3>{category}</h3>
+        <p>{measure} {category === "Óleo"?"Litros":"Kg"} {city}</p> 
+      </section>              
+      <Button width="small" onClick={handleOpenCompanyModal} >{status}</Button>
+    </StyledCard>    
+  )
   )
 }

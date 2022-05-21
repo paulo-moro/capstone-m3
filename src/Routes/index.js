@@ -5,6 +5,7 @@ import Devs from "../Pages/Devs"
 import HomeClient from "../Pages/HomePageClient"
 import HomeCollector from "../Pages/HomePageCollector"
 import LandingPage from "../Pages/LandingPage"
+import { RefactorPage } from "../Pages/Refactor"
 import Videos from "../Pages/Videos"
 import { useAuth } from "../Providers/IsAuth"
 import { useUser } from "../Providers/user"
@@ -37,6 +38,10 @@ const Routes = () => {
 
       <Route exact path="/aboutus">
         <AboutUs/>
+      </Route>
+
+      <Route exact path="/refact">
+        <RefactorPage/>
       </Route>
     </Switch>
 
